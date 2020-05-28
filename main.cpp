@@ -10,12 +10,18 @@ void participantes();
 
 int main(int argc, char** argv){
     if(argc > 1){
-        std::string archivo(argv[1]);
-        std::ifstream lectura(archivo);
-        std::ofstream escritura("puntajes.csv");
+        if(argv[1] == 1){ //Creacion de archivos
+            std::string archivo(argv[2]);
+            std::ifstream lectura(archivo);
+            std::ofstream escritura("puntajes.csv");
+        }
+        if(argv[1] == 2){
+            //Busqueda del rut
+        }
+        else{ //Se muestran participantes
+            participantes();
+        }
     }
-    
-    participantes();
     return EXIT_SUCCESS;
 }
 
