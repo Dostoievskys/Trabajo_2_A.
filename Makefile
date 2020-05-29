@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -g3 -Wall -lm
 MKDIR = mkdir -p
 
-LIBS = -lm
+LIBS = -lm 
 
 directorios:
 	$(MKDIR) build dist
@@ -10,8 +10,18 @@ directorios:
 main.o: directorios main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp -o build/main.o
 
-all: clean main.o
-	$(CXX) $(CXXFLAGS) $(LIBS) -o dist/programa build/main.o
+Carrera.o: directorios Carrera.cpp Carrera.h
+	$(CXX) $(CXXFLAGS) -c Carrera.cpp -o build/Carrera.o
+
+all: clean main.o Carrera.o
+	$(CXX) $(CXXFLAGS) $(LIBS) -o dist/programa build/main.o build/Carrera.o
+	rm -fr build
+
+Funciones.o: directorios Funciones.cpp Funciones.h
+	$(CXX) $(CXXFLAGS) -c Funciones.cpp -o build/Funciones.o
+
+all: clean main.o Funciones.o
+	$(CXX) $(CXXFLAGS) $(LIBS) -o dist/programa build/main.o build/Funciones.o
 	rm -fr build
 
 clean:
