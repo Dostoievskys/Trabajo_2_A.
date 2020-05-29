@@ -1,10 +1,13 @@
 void quicksort(Carrera ,float,float);
+//lala
 
-void quicksort(Carrera x,float prim,float ult) /// quicksort(21041,0,vacantes-1);
+void quicksort(Carrera x,float prim,float ult) // quicksort(21041,0,vacantes-1);
 {
-    Estudiante aux;
-    int j,i,pivot;
-
+    Estudiante aux; //Requiere clase Estudiante dentro de Clase Carrera
+    int j,i,pivot;  //En teoria que postulantes[Vacantes] sea de tipo estudiante
+                    //Estudiante: Atributos Pond y rut
+                    //Funcion necesaria "GetPond" y "SetPond"
+                    //El agregar al final en el fichero general seguirìa en pie, slds <3
     if(first<last){
          pivot=prim;
          i=prim;
