@@ -3,22 +3,23 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Carrera{
     private:
         int vacantes;
-        string postulantes[];
+        vector<string> postulantes;
         float ultimo;
         float id_pond;
-        int ponderacion[5];
+        vector<int> ponderacion;
     public:
         Carrera();
         //Funciones para obtener
         int GetVacantes();
-        string GetPostulantes();
+        vector<string> GetPostulantes();
         float GetUltimo();
         float GetId();
-        int GetPonderacion();
+        vector<int> GetPonderacion();
         //Funciones para agregar
         void SetVacantes(int);
         void SetPostulantes(string,int);
