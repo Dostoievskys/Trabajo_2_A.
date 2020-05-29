@@ -16,9 +16,6 @@ vector<string> Carrera::GetPostulantes(){
 float Carrera::GetUltimo(){
     return ultimo;
 }
-float Carrera::GetId(){
-    return id_pond;
-}
 vector<int> Carrera::GetPonderacion(){
     return ponderacion;
 }
@@ -31,9 +28,6 @@ void Carrera::SetPostulantes(string p, int i){
 }
 void Carrera::SetUltimo(float U){
     ultimo = U;
-}
-void Carrera::SetId(float I){
-    id_pond = I;
 }
 void Carrera::SetPonderacion(int Nem, int Rank, int Leng, int Mat, int Cs){
     ponderacion.at(0)=Nem;

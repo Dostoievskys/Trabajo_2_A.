@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "Carrera.h"
+#include "Carrera.cpp"
 
 using namespace std;
 

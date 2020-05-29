@@ -10,7 +10,6 @@ class Carrera{
         int vacantes;
         vector<string> postulantes;
         float ultimo;
-        float id_pond;
         vector<int> ponderacion;
     public:
         Carrera();
@@ -18,13 +17,11 @@ class Carrera{
         int GetVacantes();
         vector<string> GetPostulantes();
         float GetUltimo();
-        float GetId();
         vector<int> GetPonderacion();
         //Funciones para agregar
         void SetVacantes(int);
         void SetPostulantes(string,int);
         void SetUltimo(float);
-        void SetId(float);
         void SetPonderacion(int,int,int,int,int);
 };
 
