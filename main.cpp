@@ -3,10 +3,14 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include "Carrera.h"
 
 using namespace std;
 
 void participantes();
+float Ponderacion(Carrera, std::vector);
+bool ValidarRut(std::string );
 
 int main(int argc, char** argv){
     if(argc > 1){
@@ -19,7 +23,12 @@ int main(int argc, char** argv){
             std::cout << std::endl << "CORRE 1" << std::endl;
         }else{
             if(op == "2" && argc == 4){
-                //ACA EJECUTAR OPCION 2: BUSQUEDA POR RUT
+                std::string rut = argv[2];
+                if(ValidarRut(rut)==true){
+                  //ACA EJECUTAR OPCION 2: BUSQUEDA POR RUT
+                }else{
+                  std::cout << std::endl << "RUT INVALIDO" << std::endl;
+                }
                 std::cout << std::endl << "CORRE 2" << std::endl;
             }else{
                 if(argc != 4){
@@ -44,3 +53,37 @@ void participantes() {
     std::cout << std::endl << "Fanny Rivero"  << std::endl;
     std::cout << std::endl << "Jennifer Portiño"  << std::endl;
 }
+
+vector<int> obtenerPuntajes(std::getline(ss, item, ';')){
+    vector<int> arreglo;
+    std::stringstream ss(fila);
+    std::string item;
+    while (std::getline(ss, item, ';'))
+    {
+      int valor = atoi(item.c_str());
+      arreglo.push_back(valor);
+    }
+    return arreglo;
+}
+//Funcion que saca la ponderacion
+float Ponderacion(Carrera C, std::vector<int> puntajes){
+  float P; 
+  P=(puntajes[0]*C.ponderacion[0])+(puntajes[1]*C.ponderacion[1])+(puntajes[2]*C.ponderacion[2])+(puntajes[3]*C.ponderacion[3])+(puntajes[4]*C.ponderacion[4]);
+  P=P/100;
+  return P;
+}
+
+//ESPACIO DEL BRAULITO
+bool ValidarRut(std::string rut){
+  if(rut.size()==8){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+
+
+//FIN ESPACIO DEL BRAULITO
+
+
