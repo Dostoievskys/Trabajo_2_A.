@@ -8,23 +8,20 @@
 class Carrera{
     private:
         int vacantes;
-        vector<string> postulantes;
+        std::vector<std::string> postulantes;
         float ultimo;
-        float id_pond;
-        vector<int> ponderacion;
+        std::vector<int> ponderacion;
     public:
         Carrera();
         //Funciones para obtener
         int GetVacantes();
-        vector<string> GetPostulantes();
+        std::vector<std::string> GetPostulantes();
         float GetUltimo();
-        float GetId();
-        vector<int> GetPonderacion();
+        std::vector<int> GetPonderacion();
         //Funciones para agregar
         void SetVacantes(int);
-        void SetPostulantes(string,int);
+        void SetPostulantes(std::string,int);
         void SetUltimo(float);
-        void SetId(float);
         void SetPonderacion(int,int,int,int,int);
 };
 
