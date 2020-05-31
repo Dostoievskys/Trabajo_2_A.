@@ -23,7 +23,7 @@ std::vector<int> Carrera::GetPonderacion(){
 void Carrera::SetVacantes(int v){
     vacantes = v;
 }
-void Carrera::SetPostulantes(int rut, int pond, int i){
+void Carrera::SetPostulantes(int rut, float pond, int i){
     Postulante A;
     A.pond=pond;
     A.rut=rut;
