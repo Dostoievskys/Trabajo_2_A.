@@ -189,9 +189,9 @@ std::vector<Carrera> LlenarDatos(){//Datos de las carreras
     return Ca;
 }
 
-std::vector<int> obtenerPuntajes(std::string fila){
-    vector<int> arreglo;
-    std::stringstream ss(fila);
+std::vector<int> obtenerlinea(std::string fila){ 
+    vector<int> arreglo;                           
+    std::stringstream ss(fila);                  
     std::string item;
     while (std::getline(ss, item, ';')) {
         int valor = atoi(item.c_str());
@@ -201,10 +201,8 @@ std::vector<int> obtenerPuntajes(std::string fila){
 }
 
 float Ponderacion(Carrera C, std::vector<int> puntajes){//Funcion que saca la ponderacion
-  float P; 
-  vector<int> aux;
-  aux = C.GetPonderacion();
-  P=(puntajes[0]*aux.at(0))+(puntajes[1]*aux.at(1))+(puntajes[2]*aux.at(2))+(puntajes[3]*aux.at(2))+(puntajes[4]*aux.at(2));
+  float P;
+  P=(puntajes[5]*C.GetPonderacion(5))+(puntajes[1]*C.GetPonderacion(1))+(puntajes[2]*C.GetPonderacion(2))+(puntajes[3]*C.GetPonderacion(3))+(puntajes[4]*C.GetPonderacion(4));
   P=P/100;
   return P;
 }
@@ -217,34 +215,71 @@ bool ValidarRut(std::string rut){
     return false;
   }
 }
-/**
- * Funcion de Ordenamiento
-*/
-void quicksort(Carrera x,float prim,float ult){ // quicksort(21041,0,vacantes-1);
-    Estudiante aux; //Requiere clase Estudiante dentro de Clase Carrera
-    int j,i,pivot;  //En teoria que postulantes[Vacantes] sea de tipo estudiante
-                    //Estudiante: Atributos Pond y rut
-                    //Funcion necesaria "GetPond" y "SetPond"
-                    //El agregar al final en el fichero general seguirìa en pie, slds <3
-    if(first<last){
+
+//Funcion de Ordenamiento
+
+void quicksort(Carrera x,int prim,int ult){
+    Postulante aux;
+    int j,i,pivot; 
+    if(prim<ult){
          pivot=prim;
          i=prim;
          j=ult;
          while(i<j){
-             while(x.GetPostulantes[i].GetPond <= x.GetPostulantes[pivot].GetPond &&i<ult){
-                 i++;}
-             while(x.GetPostulantes[j].GetPond>x.GetPostulantes[pivot].GetPond){
-                 j--;}
+             while( x.GetPostulantes(i).pond <= x.GetPostulantes(pivot).pond && i < ult){
+                i++;}
+             while(x.GetPostulantes(j).pond > x.GetPostulantes(pivot).pond){
+                j--;}
              if(i<j){
-                 aux=x.GetPostulantes[i];
-                  x.SetPostulantes[i]=x.GetPostulantes[j];
-                  x.SetPostulantes[j]=aux;
+                aux=x.GetPostulantes(i);
+                x.SetPostulantes(x.GetPostulantes(j).rut, x.GetPostulantes(j).pond, i);
+                x.SetPostulantes(aux.rut, aux.pond, j);
              }
          } 
-         aux=x.GetPostulantes[pivot];
-         x.SetPostulantes[pivot]=x.GetPostulantes[j];
-         x.SetPostulantes[j]=aux;
+         aux=x.GetPostulantes(pivot);
+         x.SetPostulantes(x.GetPostulantes(j).rut, x.GetPostulantes(j).pond, pivot);
+         x.SetPostulantes(aux.rut, aux.pond, j);
          quicksort(x,prim,j-1);
          quicksort(x,j+1,ult);
     }
+}
+
+void entraste(std::vector<int> persona, std::vector<Carrera> Ca, std::vector<Postulante> &P){ 
+//RUT;NEM;RANKING;LENGUAJE;MATEMATICAS;CIENCIAS
+//LENGUAJE Y MATE >= 450
+//POND > ULT
+//VACANTES > 0
+    int prom=(persona[3]+persona[4])/2;
+    if(prom>=450){
+        float Pond;
+        for(int i=0;i!=Ca.size();i++){
+            Pond=Ponderacion(Ca[i],persona);
+            if(Pond>=Ca[i].GetUltimo()){
+                if(Ca[i].GetVacantes()>0){
+                    Ca[i].SetPostulantes(persona[0],Pond,Ca[i].GetActVacantes());
+                    Ca[i].SetActVacantes(Ca[i].GetActVacantes()+1);
+                    Ca[i].SetVacantes(Ca[i].GetVacantes()-1);
+                    i=Ca.size();
+                }else{
+                    quicksort(Ca[i],0,Ca[i].GetActVacantes());
+                    Ca[i].SetUltimo(Ca[i].GetPostulantes(Ca[i].GetActVacantes()).pond);
+                    if(Pond>Ca[i].GetUltimo()){
+                        //POR TERMINAR
+                    }
+                }
+            }
+        }
+    }
+}
+//RUT;NEM;RANKING;LENGUAJE;MATEMATICAS;CIENCIAS
+void llenarPostulante(std::vector<int> persona, std::vector<Postulante> &P){
+    Postulante A;
+    A.rut=persona[0];
+    A.nem=persona[1];
+    A.ranking=persona[2];
+    A.lenguaje=persona[3];
+    A.mate=persona[4];
+    A.ciencias=persona[5];
+    P.push_back(A);
+
 }
