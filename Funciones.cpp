@@ -232,47 +232,50 @@ void quicksort(Carrera x,int prim,int ult){
                 j--;}
              if(i<j){
                 aux=x.GetPostulantes(i);
-                x.SetPostulantes(x.GetPostulantes(j).rut, x.GetPostulantes(j).pond, i);
-                x.SetPostulantes(aux.rut, aux.pond, j);
+                x.SetPostulantes(x.GetPostulantes(j), i);
+                x.SetPostulantes(aux, j);
              }
          } 
          aux=x.GetPostulantes(pivot);
-         x.SetPostulantes(x.GetPostulantes(j).rut, x.GetPostulantes(j).pond, pivot);
-         x.SetPostulantes(aux.rut, aux.pond, j);
+         x.SetPostulantes(x.GetPostulantes(j), pivot);
+         x.SetPostulantes(aux, j);
          quicksort(x,prim,j-1);
          quicksort(x,j+1,ult);
     }
 }
 
 void entraste(std::vector<int> persona, std::vector<Carrera> Ca, std::vector<Postulante> &P){ 
-//RUT;NEM;RANKING;LENGUAJE;MATEMATICAS;CIENCIAS
-//LENGUAJE Y MATE >= 450
-//POND > ULT
-//VACANTES > 0
     int prom=(persona[3]+persona[4])/2;
     if(prom>=450){
         float Pond;
         for(int i=0;i!=Ca.size();i++){
             Pond=Ponderacion(Ca[i],persona);
             if(Pond>=Ca[i].GetUltimo()){
+                Postulante A = llenarPostulante(persona,Pond);
                 if(Ca[i].GetVacantes()>0){
-                    Ca[i].SetPostulantes(persona[0],Pond,Ca[i].GetActVacantes());
+                    Ca[i].SetPostulantes(A, Ca[i].GetActVacantes());
                     Ca[i].SetActVacantes(Ca[i].GetActVacantes()+1);
                     Ca[i].SetVacantes(Ca[i].GetVacantes()-1);
                     i=Ca.size();
+                    break;
                 }else{
                     quicksort(Ca[i],0,Ca[i].GetActVacantes());
                     Ca[i].SetUltimo(Ca[i].GetPostulantes(Ca[i].GetActVacantes()).pond);
                     if(Pond>Ca[i].GetUltimo()){
-                        //POR TERMINAR
+                        Postulante B;
+                        B=Ca[i].GetPostulantes(Ca[i].GetActVacantes());
+                        Ca[i].SetPostulantes(A, Ca[i].GetActVacantes());
+                        P.push_back(B);
+                        quicksort(Ca[i],0,Ca[i].GetActVacantes());
+                        break;
                     }
                 }
             }
         }
     }
 }
-//RUT;NEM;RANKING;LENGUAJE;MATEMATICAS;CIENCIAS
-void llenarPostulante(std::vector<int> persona, std::vector<Postulante> &P){
+
+Postulante llenarPostulante(std::vector<int> persona, int pond){
     Postulante A;
     A.rut=persona[0];
     A.nem=persona[1];
@@ -280,6 +283,17 @@ void llenarPostulante(std::vector<int> persona, std::vector<Postulante> &P){
     A.lenguaje=persona[3];
     A.mate=persona[4];
     A.ciencias=persona[5];
-    P.push_back(A);
-
+    A.pond=pond;
+    return A;
+}
+std::vector<int> vectorint(Postulante A){
+    std::vector<int> aux;
+    aux.at(0)= A.rut;
+    aux.at(1)= A.nem;
+    aux.at(2)= A.ranking;
+    aux.at(3)= A.lenguaje;
+    aux.at(4)= A.mate;
+    aux.at(5)= A.ciencias;
+    aux.at(6)= A.pond;
+    return aux;
 }

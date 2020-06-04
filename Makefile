@@ -1,7 +1,6 @@
 CXX = g++
 CXXFLAGS = -g3 -Wall
 MKDIR = mkdir -p
-
 LIBS = -lm 
 
 directorios:

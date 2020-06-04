@@ -10,24 +10,27 @@ Carrera::Carrera(){ //Constructor
 int Carrera::GetVacantes(){
     return vacantes;
 }
+int Carrera::GetActVacantes(){
+    return actualvac;
+}
 Postulante Carrera::GetPostulantes(int i){
     return P[i];
 }
 float Carrera::GetUltimo(){
     return ultimo;
 }
-std::vector<int> Carrera::GetPonderacion(){
-    return ponderacion;
+int Carrera::GetPonderacion(int i){
+    return ponderacion[i];
 }
 //Funciones para agregar
 void Carrera::SetVacantes(int v){
     vacantes = v;
 }
-void Carrera::SetPostulantes(int rut, int pond, int i){
-    Postulante A;
-    A.pond=pond;
-    A.rut=rut;
-    P.at(i)=A;
+void Carrera::SetActVacantes(int v){
+    actualvac=v;
+}
+void Carrera::SetPostulantes(Postulante B, int i){
+    P[i]=B;
 }
 void Carrera::SetUltimo(float U){
     ultimo = U;

@@ -10,6 +10,7 @@ typedef struct Postulante{
     int nem, lenguaje, mate, ciencias, ranking;
 };
 
+
 void participantes();
 std::vector<Carrera> LlenarDatos();
 std::vector<int> obtenerlinea(std::string fila);
@@ -21,5 +22,6 @@ bool ValidarRut(std::string rut);
 void quicksort(Carrera,int,int);
 void entraste(std::vector<int> , std::vector<Carrera> , std::vector<Postulante> &);
 void llenarPostulante(std::vector<int>, std::vector<Postulante> &);
+std::vector<int> vectorint(Postulante);
 
 #endif

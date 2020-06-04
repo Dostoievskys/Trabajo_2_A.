@@ -13,29 +13,27 @@ int main(int argc, char** argv){
     std::vector<Postulante> P;
     if(argc > 1){
         std::string op = argv[1];
+        std::vector<Carrera> Ca=LlenarDatos();
         if(op == "1" && argc == 4){ //argc = 4 o 3 (llamada;opcion;ubicacion;ubicacion)
             LlenarDatos(); //RETURN VECTOR CA[];
             std::string archivo(argv[2]);
             std::ifstream lectura(archivo);
-            std::ofstream escritura("puntajes.txt");
+            std::ofstream escritura("biotecnologia.txt");
             if (lectura) {
                 for (std::string linea; getline(lectura,linea) ; ) {
                     std::vector<int> persona = obtenerlinea(linea);
-                    llenarPostulante(persona, P);
-                    //Aqui quede...
-
-                    //Final
+                    entraste(persona,Ca,P);
                     persona.clear();
-                    P.erase (P.begin());
                 }
-                /*for(int i=0; i<cont;i++){ //Creamos el archivo ordenado
-                    B=E[i];
+                for (int i=0; i!=P.size(); i++){
+                    entraste(vectorint(P[i]),Ca,P);
+                }
 
-                    std::string salida = std::to_string(B.GetRut()) + ";" + std::to_string(B.GetPromedio());
+                for(int j=0; j < Ca[0].GetActVacantes();j++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[0].GetPostulantes(j).rut) + ";" + std::to_string(Ca[0].GetPostulantes(j).pond);
                     escritura << salida << std::endl;
-                }*/
+                }
             }
-            //ACA EJECUTAR OPCION 1
             std::cout << std::endl << "CORRE 1" << std::endl;
         }else{
             if(op == "2" && argc == 4){
