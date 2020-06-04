@@ -24,7 +24,7 @@ class Carrera{
         //Funciones para agregar
         void SetVacantes(int);
         void SetActVacantes(int);
-        void SetPostulantes(Postulante , int);
+        void SetPostulantes(Postulante, int);
         void SetUltimo(float);
         void SetPonderacion(int,int,int,int,int);
 };
