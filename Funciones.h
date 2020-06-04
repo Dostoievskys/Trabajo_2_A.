@@ -18,8 +18,8 @@ bool ValidarRut(std::string rut);
 /**
  * Funcion de Ordenamiento
 */
-void quicksort(Carrera,int,int);
-void entraste(std::vector<int> , std::vector<Carrera> , std::vector<Postulante> &);
-void llenarPostulante(std::vector<int>, std::vector<Postulante> &);
+//void quicksort(Carrera,int,int);
+//void entraste(std::vector<int> , std::vector<Carrera> , std::vector<Postulante> &);
+//void llenarPostulante(std::vector<int>, std::vector<Postulante> &);
 
 #endif

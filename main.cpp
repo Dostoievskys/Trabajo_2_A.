@@ -51,9 +51,10 @@ int main(int argc, char** argv){
             std::ofstream Dindus("21023.txt");//diseño industrial
 
             if (lectura) {
-                for (std::string linea; getline(lectura,linea) ; ) {
+                for (std::string linea; getline(lectura,linea) ; ){
                     std::vector<int> persona = obtenerlinea(linea);
-                    llenarPostulante(persona, P);
+                    
+                    //llenarPostulante(persona, P);
                     //Aqui quede...
 
                     //Final

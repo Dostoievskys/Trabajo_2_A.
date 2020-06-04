@@ -202,7 +202,8 @@ std::vector<int> obtenerlinea(std::string fila){
 
 float Ponderacion(Carrera C, std::vector<int> puntajes){//Funcion que saca la ponderacion
   float P;
-  P=(puntajes[5]*C.GetPonderacion(5))+(puntajes[1]*C.GetPonderacion(1))+(puntajes[2]*C.GetPonderacion(2))+(puntajes[3]*C.GetPonderacion(3))+(puntajes[4]*C.GetPonderacion(4));
+  std::vector<int> Pond = C.GetPonderacion();
+  P=(puntajes[5]*Pond[5])+(puntajes[1]*Pond[1])+(puntajes[2]*Pond[2])+(puntajes[3]*Pond[3])+(puntajes[4]*Pond[4]);
   P=P/100;
   return P;
 }
@@ -217,7 +218,7 @@ bool ValidarRut(std::string rut){
 }
 
 //Funcion de Ordenamiento
-
+/**
 void quicksort(Carrera x,int prim,int ult){
     Postulante aux;
     int j,i,pivot; 
@@ -283,3 +284,4 @@ void llenarPostulante(std::vector<int> persona, std::vector<Postulante> &P){
     P.push_back(A);
 
 }
+*/
