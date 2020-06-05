@@ -6,7 +6,7 @@
 #include "Carrera.h"
 
 void participantes();
-void LlenarDatos(std::vector<Carrera> &);
+void LlenarDatos(std::vector<Carrera> *);
 std::vector<int> obtenerlinea(std::string fila);
 float Ponderacion(Carrera, std::vector<int>);
 bool ValidarRut(std::string rut);

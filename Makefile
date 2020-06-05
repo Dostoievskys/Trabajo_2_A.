@@ -10,10 +10,10 @@ directorios:
 main.o: directorios main.cpp 
 	$(CXX) $(CXXFLAGS) -c main.cpp -o build/main.o
 
-Carrera.o: directorios Carrera.cpp Carrera.h Funciones.h
+Carrera.o: directorios Carrera.cpp Carrera.h
 	$(CXX) $(CXXFLAGS) -c Carrera.cpp -o build/Carrera.o
 
-Funciones.o: directorios Funciones.cpp Funciones.h Carrera.h
+Funciones.o: directorios Funciones.cpp Funciones.h
 	$(CXX) $(CXXFLAGS) -c Funciones.cpp -o build/Funciones.o
 
 all: clean main.o Funciones.o Carrera.o

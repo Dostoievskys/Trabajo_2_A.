@@ -245,7 +245,7 @@ void entraste(std::vector<int> persona, std::vector<Carrera> Ca, std::vector<Pos
     int prom=(persona[3]+persona[4])/2;
     if(prom>=450){
         int Pond;
-        for(int i=0;i!=Ca.size();i++){
+        for(int i=0;i<27;++i){
             Pond=Ponderacion(Ca[i],persona);
             if(Pond>=Ca[i].GetUltimo()){
                 Postulante A = llenarPostulante(persona,Pond);
