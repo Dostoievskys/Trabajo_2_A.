@@ -13,13 +13,11 @@ using namespace std;
  * codigocarrera.txt almacenado en la ubicacion especificada
 */
 int main(int argc, char** argv){
-    std::vector<Postulante> P;
     if(argc > 1){
         std::string op = argv[1];
         if(op == "1" && argc == 4){ //argc = 4 o 3 (llamada;opcion;ubicacion;ubicacion)
-            LlenarDatos(); //RETURN VECTOR CA[];
             std::string archivo(argv[2]);
-            std::ifstream lectura(archivo); //Lectura del archivo puntajes.cvs
+            std::ifstream lectura(archivo);
             //Escritura de los .txt por carrera 
             std::ofstream Biotec("21073.txt");//Ing. Biotecnologia
             std::ofstream Compu("21041.txt");//Ing. civil computacion
@@ -49,28 +47,10 @@ int main(int argc, char** argv){
             std::ofstream Turis("21082.txt");//Ing. gestion turistica
             std::ofstream Visual("21024.txt");//Diseño comunicacion visual
             std::ofstream Dindus("21023.txt");//diseño industrial
-
-            if (lectura) {
-                for (std::string linea; getline(lectura,linea) ; ){
-                    std::vector<int> persona = obtenerlinea(linea);
-                    
-                    //llenarPostulante(persona, P);
-                    //Aqui quede...
-
-                    //Final
-                    persona.clear();
-                    P.erase (P.begin());
-                }
-                /*for(int i=0; i<cont;i++){ //Creamos el archivo ordenado
-                    B=E[i];
-
-                    std::string salida = std::to_string(B.GetRut()) + ";" + std::to_string(B.GetPromedio());
-                    escritura << salida << std::endl;
-                }*/
-            }
             //ACA EJECUTAR OPCION 1
             std::cout << std::endl << "CORRE 1" << std::endl;
-        }else{
+        }
+        else{
             if(op == "2" && argc == 4){
                 std::string rut = argv[2];
                 if(ValidarRut(rut)==true){

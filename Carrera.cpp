@@ -10,8 +10,8 @@ Carrera::Carrera(){ //Constructor
 int Carrera::GetVacantes(){
     return vacantes;
 }
-Postulante Carrera::GetPostulantes(int i){
-    return P[i];
+std::vector<std::string> Carrera::GetPostulantes(){
+    return postulantes;
 }
 float Carrera::GetUltimo(){
     return ultimo;
@@ -23,11 +23,8 @@ std::vector<int> Carrera::GetPonderacion(){
 void Carrera::SetVacantes(int v){
     vacantes = v;
 }
-void Carrera::SetPostulantes(int rut, float pond, int i){
-    Postulante A;
-    A.pond=pond;
-    A.rut=rut;
-    P.at(i)=A;
+void Carrera::SetPostulantes(std::string p, int i){
+    postulantes.at(i) = p;
 }
 void Carrera::SetUltimo(float U){
     ultimo = U;

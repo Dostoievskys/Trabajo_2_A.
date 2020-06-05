@@ -4,24 +4,23 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Funciones.h"
 
 class Carrera{
     private:
         int vacantes;
-        std::vector<Postulante> P; 
+        std::vector<std::string> postulantes;
         float ultimo;
         std::vector<int> ponderacion;
     public:
         Carrera();
         //Funciones para obtener
         int GetVacantes();
-        Postulante GetPostulantes(int);
+        std::vector<std::string> GetPostulantes();
         float GetUltimo();
         std::vector<int> GetPonderacion();
         //Funciones para agregar
         void SetVacantes(int);
-        void SetPostulantes(int,float, int);
+        void SetPostulantes(std::string,int);
         void SetUltimo(float);
         void SetPonderacion(int,int,int,int,int);
 };
