@@ -7,31 +7,29 @@
 #include "Carrera.h"
 #include "Funciones.h"
 
-using namespace std;
-
 int main(int argc, char** argv){
     std::vector<Postulante> P;
     if(argc > 1){
         std::string op = argv[1];
-        std::vector<Carrera> Ca=LlenarDatos();
-        if(op == "1" && argc == 4){ //argc = 4 o 3 (llamada;opcion;ubicacion;ubicacion)
-            LlenarDatos(); //RETURN VECTOR CA[];
+        std::vector<Carrera> Ca;
+        LlenarDatos(Ca);
+        if(op == "1" && argc == 4){
             std::string archivo(argv[2]);
             std::ifstream lectura(archivo);
             std::ofstream escritura("biotecnologia.txt");
             if (lectura) {
                 for (std::string linea; getline(lectura,linea) ; ) {
                     std::vector<int> persona = obtenerlinea(linea);
-                    entraste(persona,Ca,P);
-                    persona.clear();
+                    //entraste(persona,Ca,P);
+                    //persona.clear();
                 }
                 for (int i=0; i!=P.size(); i++){
-                    entraste(vectorint(P[i]),Ca,P);
+                    //entraste(vectorint(P[i]),Ca,P);
                 }
 
                 for(int j=0; j < Ca[0].GetActVacantes();j++){ //Creamos el archivo ordenado
-                    std::string salida = std::to_string(Ca[0].GetPostulantes(j).rut) + ";" + std::to_string(Ca[0].GetPostulantes(j).pond);
-                    escritura << salida << std::endl;
+                    //std::string salida = std::to_string(Ca[0].GetPostulantes(j).rut) + ";" + std::to_string(Ca[0].GetPostulantes(j).pond);
+                    //escritura << salida << std::endl;
                 }
             }
             std::cout << std::endl << "CORRE 1" << std::endl;
@@ -55,8 +53,7 @@ int main(int argc, char** argv){
                 }      
             }
         }
-    }
-    else{ //Se muestran participantes
+    }else{ //Se muestran participantes
             participantes();
         }
     return EXIT_SUCCESS;

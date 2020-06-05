@@ -4,7 +4,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Funciones.h"
+struct Postulante{
+        int rut, pond, nem, lenguaje, mate, ciencias, ranking;
+    };
 
 class Carrera{
     private:

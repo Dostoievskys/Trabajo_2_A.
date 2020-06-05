@@ -7,7 +7,6 @@
 #include "Carrera.h"
 #include "Funciones.h"
 
-using namespace std;
 
 void participantes(){
     std::cout << std::endl << "=== Integrantes: ===" << std::endl;
@@ -16,8 +15,7 @@ void participantes(){
     std::cout << std::endl << "Jennifer Portiño"  << std::endl;
 }
 
-std::vector<Carrera> LlenarDatos(){//Datos de las carreras
-    std::vector<Carrera> Ca;
+void LlenarDatos(std::vector<Carrera> &Ca){//Datos de las carreras
     //Ing en biotecnologia 
     Carrera Biotec; 
     Biotec.SetVacantes(60);
@@ -186,11 +184,10 @@ std::vector<Carrera> LlenarDatos(){//Datos de las carreras
     disin.SetUltimo(439.9);
     disin.SetPonderacion(10,40,30,10,10);
     Ca.push_back(disin);
-    return Ca;
 }
 
 std::vector<int> obtenerlinea(std::string fila){ 
-    vector<int> arreglo;                           
+    std::vector<int> arreglo;                           
     std::stringstream ss(fila);                  
     std::string item;
     while (std::getline(ss, item, ';')) {
@@ -247,7 +244,7 @@ void quicksort(Carrera x,int prim,int ult){
 void entraste(std::vector<int> persona, std::vector<Carrera> Ca, std::vector<Postulante> &P){ 
     int prom=(persona[3]+persona[4])/2;
     if(prom>=450){
-        float Pond;
+        int Pond;
         for(int i=0;i!=Ca.size();i++){
             Pond=Ponderacion(Ca[i],persona);
             if(Pond>=Ca[i].GetUltimo()){

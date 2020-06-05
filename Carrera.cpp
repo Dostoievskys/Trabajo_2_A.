@@ -2,8 +2,6 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
 Carrera::Carrera(){ //Constructor
 }
 //Funciones para obtener
