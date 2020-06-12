@@ -21,6 +21,6 @@ all: clean main.o Funciones.o Carrera.o
 	rm -fr build
 
 clean:
-	rm -fr *.o a.out core programa dist build
+	rm -fr *.o a.out core programa dist build uno.txt dos.txt tres.txt
 
 .DEFAULT_GOAL := all

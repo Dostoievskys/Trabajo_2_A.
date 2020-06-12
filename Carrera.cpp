@@ -2,7 +2,8 @@
 #include <iostream>
 #include <vector>
 
-Carrera::Carrera(){ //Constructor
+Carrera::Carrera(){ 
+    actualvac=0; //Constructor
 }
 //Funciones para obtener
 int Carrera::GetVacantes(){
@@ -28,15 +29,18 @@ void Carrera::SetActVacantes(int v){
     actualvac=v;
 }
 void Carrera::SetPostulantes(Postulante B, int i){
-    P[i]=B;
+    P.at(i)=B;
+}
+void Carrera::llenarPost(Postulante B){
+    P.push_back(B);
 }
 void Carrera::SetUltimo(float U){
     ultimo = U;
 }
 void Carrera::SetPonderacion(int Nem, int Rank, int Leng, int Mat, int Cs){
-    ponderacion.at(0)=Nem;
-    ponderacion.at(1)=Rank;
-    ponderacion.at(2)=Leng;
-    ponderacion.at(3)=Mat;
-    ponderacion.at(4)=Cs;
+    ponderacion.push_back(Nem);
+    ponderacion.push_back(Rank);
+    ponderacion.push_back(Leng);
+    ponderacion.push_back(Mat);
+    ponderacion.push_back(Cs);
 }

@@ -5,14 +5,15 @@
 #include <string>
 #include <vector>
 struct Postulante{
-        int rut, pond, nem, lenguaje, mate, ciencias, ranking;
+        int rut, nem, lenguaje, mate, ciencias, ranking;
+        float pond;
     };
 
 class Carrera{
     private:
         int vacantes;
-        int actualvac=0;
-        std::vector<Postulante> P; 
+        int actualvac;
+        std::vector<Postulante> P;
         float ultimo;
         std::vector<int> ponderacion;
     public:
@@ -24,6 +25,7 @@ class Carrera{
         float GetUltimo();
         int GetPonderacion(int);
         //Funciones para agregar
+        void llenarPost(Postulante );
         void SetVacantes(int);
         void SetActVacantes(int);
         void SetPostulantes(Postulante, int);
