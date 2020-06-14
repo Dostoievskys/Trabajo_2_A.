@@ -184,19 +184,13 @@ void LlenarDatos(Carrera Ca[]){//Datos de las carreras
     disin.SetPonderacion(10,40,30,10,10);
     Ca[27]=disin;
 }
-float Ponderacion(Carrera C, std::vector<int> puntajes){//Funcion que saca la ponderacion
-  float P;
-  if(puntajes[5]>puntajes[6]){//nem;ranking;leng;mat;ciencias;historia
-      P=(puntajes[1]*C.GetPonderacion(0))+(puntajes[2]*C.GetPonderacion(1))+
-      (puntajes[3]*C.GetPonderacion(2))+(puntajes[4]*C.GetPonderacion(3))+
-      (puntajes[5]*C.GetPonderacion(4));
-  }else{
-      P=(puntajes[1]*C.GetPonderacion(0))+(puntajes[2]*C.GetPonderacion(1))+
-      (puntajes[3]*C.GetPonderacion(2))+(puntajes[4]*C.GetPonderacion(3))+
-      (puntajes[6]*C.GetPonderacion(4));
-  }
-  P=P/100;
-  return P;
+float Ponderacion(Carrera C, Postulante P){//Funcion que saca la ponderacion
+    float A;//nem;ranking;leng;mat;ciencias;historia
+    A =( P.nem *C.GetPonderacion(0))+(P.ranking *C.GetPonderacion(1))+
+      ( P.lenguaje * C.GetPonderacion(2))+(P.mate *C.GetPonderacion(3))+
+      ( P.ciencias *C.GetPonderacion(4));
+    A = A / 100;
+    return A;
 }
 
 std::vector<int> obtenerlinea(std::string fila){ 
@@ -237,7 +231,7 @@ void quicksort(Carrera (*x),int prim,int ult){
     }
 }
 
-void entraste(std::vector<int> persona, Carrera Ca[], std::vector<Postulante> (*P)){ 
+/*void entraste(Carrera Ca[], std::vector<Postulante> (*P)){
     int prom=(persona[3]+persona[4])/2;
     if(prom>=450){
         float Pond;
@@ -265,9 +259,54 @@ void entraste(std::vector<int> persona, Carrera Ca[], std::vector<Postulante> (*
             }
         }
     }
+}*/
+
+void entraste(Carrera Ca[], std::vector<Postulante> P){
+    int c=0;
+    std::cout<<P.size()<<std::endl;
+    for(int i=0;i<int(P.size());i++){ //<int(P.size())
+        float prom=( P[i].lenguaje + P[i].mate )/2;
+        //std::cout<<"Vacantes: "<<Ca[0].GetVacantes()<<std::endl;
+        if(prom>=450){
+            float pond;
+            for(int j=0;j<27;j++){
+                pond=Ponderacion(Ca[j],P[i]);
+                //std::cout<<"Vamos en "<<j<<":"<<Ca[j].GetVacantes()<<" - "<<Ca[j].GetActVacantes()<<std::endl;
+                if(pond>Ca[j].GetUltimo()){
+                    SetPond((&P[i]), pond);
+                    if(Ca[j].GetVacantes()>0){
+                        Ca[j].llenarPost(P[i]);
+                        Ca[j].SetActVacantes((Ca[j].GetActVacantes()+1));
+                        Ca[j].SetVacantes((Ca[j].GetVacantes()-1));
+                        //std::cout<<"CONTADOR"<<c<<std::endl;
+                        c++;
+                        if(Ca[j].GetVacantes()==0){
+                            quicksort((&Ca[j]),0,Ca[j].GetActVacantes()-1);
+                            Ca[j].SetUltimo(Ca[j].GetPostulantes(Ca[j].GetActVacantes()-1).pond);
+                        }
+                    }else{
+                        if(pond>Ca[j].GetUltimo()){
+                            //Postulante B;
+                            //B=Ca[j].GetPostulantes((Ca[j].GetActVacantes()-1));
+                            Ca[j].SetPostulantes(P[i], (Ca[j].GetActVacantes()-1));
+                            //Falta ver que hago con el que saco "B"
+                            quicksort((&Ca[j]),0,Ca[j].GetActVacantes()-1);
+                            Ca[j].SetUltimo(Ca[j].GetPostulantes(Ca[j].GetActVacantes()).pond);
+                            //ASI TERMINA
+                        }  
+                    }
+                    j=30;
+                }
+            }
+        }
+        //std::cout<<"Vamos en ("<<i<<"/2999)"<<std::endl;
+    }
 }
 
-Postulante llenarPostulante(std::vector<int> persona, int pond){
+
+
+
+Postulante llenarPostulante(std::vector<int> persona){
     Postulante A;
     A.rut=persona[0];
     A.nem=persona[1];
@@ -279,20 +318,13 @@ Postulante llenarPostulante(std::vector<int> persona, int pond){
     }else{
         A.ciencias=persona[6];
     }
-    A.pond=pond;
+    A.pond=0;
     return A;
 }
-/*std::vector<int> vectorint(Postulante A){
-    std::vector<int> aux;
-    aux.push_back(A.rut);
-    aux.push_back(A.nem);
-    aux.push_back(A.ranking);
-    aux.push_back(A.lenguaje);
-    aux.push_back(A.mate);
-    aux.push_back(A.ciencias);
-    aux.push_back(A.pond);
-    return aux;
-}*/
+
+void SetPond(Postulante *A, float ponde){
+    (*A).pond=ponde;
+}
 
 bool ValidarRut(std::string rut){
   if(rut.size()==8){

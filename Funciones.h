@@ -13,8 +13,9 @@ float Ponderacion(Carrera, std::vector<int>);
  * Funcion de Ordenamiento
 */
 void quicksort(Carrera *,int,int);
-void entraste(std::vector<int>, Carrera [], std::vector<Postulante> *);
-Postulante llenarPostulante(std::vector<int>, int pond);
+void entraste(Carrera [], std::vector<Postulante>);
+Postulante llenarPostulante(std::vector<int>);
+void SetPond(Postulante *, float );
 std::vector<int> vectorint(Postulante);
 bool ValidarRut(std::string rut);
 

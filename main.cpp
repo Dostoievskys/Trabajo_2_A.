@@ -24,12 +24,14 @@ int main(int argc, char** argv){
             std::ofstream tres("tres.txt");
             if (lectura) { 
                 std::vector<int> persona;
-                int c=0;          
+                  
                 for (std::string linea; getline(lectura,linea) ; ) {
                     persona = obtenerlinea(linea);
-                    entraste(persona, Ca,(&P));
+                    Postulante A=llenarPostulante(persona);
+                    P.push_back(A);
                     persona.clear();
                 }
+                entraste(Ca,P);
 
                 for(int j=0; j < Ca[0].GetActVacantes();j++){ //Creamos el archivo ordenado
                     std::string salida = std::to_string(Ca[0].GetPostulantes(j).rut) + ";" + std::to_string(Ca[0].GetPostulantes(j).pond);
@@ -39,8 +41,8 @@ int main(int argc, char** argv){
                     std::string salida = std::to_string(Ca[1].GetPostulantes(q).rut) + ";" + std::to_string(Ca[1].GetPostulantes(q).pond);
                     dos << salida << std::endl;
                 }
-                for(int j=0; j < Ca[5].GetActVacantes();j++){ //Creamos el archivo ordenado
-                    std::string salida = std::to_string(Ca[5].GetPostulantes(j).rut) + ";" + std::to_string(Ca[5].GetPostulantes(j).pond);
+                for(int j=0; j < Ca[3].GetActVacantes();j++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[3].GetPostulantes(j).rut) + ";" + std::to_string(Ca[3].GetPostulantes(j).pond);
                     tres << salida << std::endl;
                 }
             }
