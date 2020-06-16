@@ -15,7 +15,7 @@ class Carrera{
         int actualvac;
         std::vector<Postulante> P;
         float ultimo;
-        std::vector<int> ponderacion;
+        int tipo;
     public:
         Carrera();
         //Funciones para obtener
@@ -23,14 +23,14 @@ class Carrera{
         int GetActVacantes();
         Postulante GetPostulantes(int);
         float GetUltimo();
-        int GetPonderacion(int);
+        int GetTipo();
         //Funciones para agregar
         void llenarPost(Postulante );
         void SetVacantes(int);
         void SetActVacantes(int);
         void SetPostulantes(Postulante, int);
         void SetUltimo(float);
-        void SetPonderacion(int,int,int,int,int);
+        void SetTipo(int);
 };
 
 #endif

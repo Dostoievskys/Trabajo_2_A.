@@ -19,179 +19,230 @@ void LlenarDatos(Carrera Ca[]){//Datos de las carreras
     Carrera Biotec;
     Biotec.SetVacantes(60);
     Biotec.SetUltimo(540.9);
-    Biotec.SetPonderacion(15,25,20,30,10);
+    Biotec.SetTipo(8);
     Ca[0]=Biotec;
     //Ing Civil computacion
     Carrera Compu;
     Compu.SetVacantes(130);
     Compu.SetUltimo(539.35);
-    Compu.SetPonderacion(10,25,20,35,10);
+    Compu.SetTipo(12);
     Ca[1]=Compu;
     //Ing Civil Ciencias de Datos 
     Carrera Datos;
     Datos.SetVacantes(60);
     Datos.SetUltimo(539.35);
-    Datos.SetPonderacion(10,25,20,35,10);
+    Datos.SetTipo(12);
     Ca[2]=Datos;
     //Arquitectura
     Carrera Arqui;
     Arqui.SetVacantes(100);
     Arqui.SetUltimo(527.4);
-    Arqui.SetPonderacion(15,25,20,20,20);
+    Arqui.SetTipo(5);
     Ca[3]=Arqui;
     //Administracion Publica
     Carrera AdmiP;
     AdmiP.SetVacantes(35);
     AdmiP.SetUltimo(513);
-    AdmiP.SetPonderacion(15,20,30,25,10);
+    AdmiP.SetTipo(1);
     Ca[4]=AdmiP;
     //Trabajo Social
     Carrera Social;
     Social.SetVacantes(95);
     Social.SetUltimo(510.5);
-    Social.SetPonderacion(20,30,20,10,20);
+    Social.SetTipo(11);
     Ca[5]=Social;
     //Ing Informatica
     Carrera Info;
     Info.SetVacantes(105);
     Info.SetUltimo(507.75);
-    Info.SetPonderacion(10,25,20,35,10);
+    Info.SetTipo(12);
     Ca[6]=Info;
     //Ing Civil Mecanica
     Carrera Meca;
     Meca.SetVacantes(90);
     Meca.SetUltimo(506.8);
-    Meca.SetPonderacion(10,25,20,35,10);
+    Meca.SetTipo(12);
     Ca[7]=Meca;
     //Bachillerato ciencias de la ingenieria 
     Carrera Csing;
     Csing.SetVacantes(25);
     Csing.SetUltimo(504.25);
-    Csing.SetPonderacion(10,25,20,35,10);
+    Csing.SetTipo(12);
     Ca[8]=Csing;
     //Ing civil industrial
     Carrera cindus;
     cindus.SetVacantes(200);
     cindus.SetUltimo(500.85);
-    cindus.SetPonderacion(10,25,20,35,10);
+    cindus.SetTipo(12);
     Ca[9]=cindus;
     //Ing Civil electronica
     Carrera elec;
     elec.SetVacantes(80);
     elec.SetUltimo(500.65);
-    elec.SetPonderacion(10,25,20,35,10);
+    elec.SetTipo(12);
     Ca[10]=elec;
     //Ing Comercial
     Carrera Cmcial;
     Cmcial.SetVacantes(125);
     Cmcial.SetUltimo(496.9);
-    Cmcial.SetPonderacion(10,20,30,30,10);
+    Cmcial.SetTipo(4);
     Ca[11]=Cmcial;
     //Dibujante proyectista
     Carrera Dibu;
     Dibu.SetVacantes(25);
     Dibu.SetUltimo(496.45);
-    Dibu.SetPonderacion(10,25,20,35,10);
+    Dibu.SetTipo(12);
     Ca[12]=Dibu;
     //Ing en geomensura
     Carrera Geo;
     Geo.SetVacantes(60);
     Geo.SetUltimo(487.85);
-    Geo.SetPonderacion(10,25,20,35,10);
+    Geo.SetTipo(12);
     Ca[13]=Geo;
     //Ing en construccion
     Carrera Contru;
     Contru.SetVacantes(100);
     Contru.SetUltimo(476.95);
-    Contru.SetPonderacion(20,20,15,35,10);
+    Contru.SetTipo(6);
     Ca[14]=Contru;
     //Ing industrial
     Carrera indus;
     indus.SetVacantes(60);
     indus.SetUltimo(476.25);
-    indus.SetPonderacion(10,25,20,35,10);
+    indus.SetTipo(12);
     Ca[15]=indus;
     //Ing civil en obras civiles
     Carrera Civil;
     Civil.SetVacantes(100);
     Civil.SetUltimo(476.1);
-    Civil.SetPonderacion(20,20,15,35,10);
+    Civil.SetTipo(6);
     Ca[16]=Civil;
     //Quimica industrial
     Carrera Quin;
     Quin.SetVacantes(40);
     Quin.SetUltimo(472);
-    Quin.SetPonderacion(10,25,15,30,20);
+    Quin.SetTipo(9);
     Ca[17]=Quin;
     //Ing industria alimentaria
     Carrera Alim;
     Alim.SetVacantes(30);
     Alim.SetUltimo(464.9);
-    Alim.SetPonderacion(15,25,20,30,10);
+    Alim.SetTipo(8);
     Ca[18]=Alim;
     //Ing civil prevencion de riesgos
     Carrera Prev;
     Prev.SetVacantes(30);
     Prev.SetUltimo(462.85);
-    Prev.SetPonderacion(15,35,20,20,10);
+    Prev.SetTipo(7);
     Ca[19]=Prev;
     //Ing en administracion agroindustrial
     Carrera Agro;
     Agro.SetVacantes(30);
     Agro.SetUltimo(461.8);
-    Agro.SetPonderacion(10,20,30,30,10);
+    Agro.SetTipo(4);
     Ca[20]=Agro;
     //Ing en Comercio internacional
     Carrera inter;
     inter.SetVacantes(90);
     inter.SetUltimo(458.8);
-    inter.SetPonderacion(10,20,30,30,10);
+    inter.SetTipo(4);
     Ca[21]=inter;
     //Bibliotecnologia y documentacion
     Carrera biblio;
     biblio.SetVacantes(35);
     biblio.SetUltimo(453.6);
-    biblio.SetPonderacion(20,20,40,10,10);
+    biblio.SetTipo(2);
     Ca[22]=biblio;
     //Contador publico y auditor
     Carrera cont;
     cont.SetVacantes(80);
     cont.SetUltimo(452.2);
-    cont.SetPonderacion(20,20,30,15,15);
+    cont.SetTipo(3);
     Ca[23]=cont;
     //Ing en Quimica
     Carrera Quim;
     Quim.SetVacantes(80);
     Quim.SetUltimo(451.7);
-    Quim.SetPonderacion(10,25,15,30,20);
+    Quim.SetTipo(9);
     Ca[24]=Quim;
     //Ing en gestion turistica
     Carrera turis;
     turis.SetVacantes(25);
     turis.SetUltimo(448.1);
-    turis.SetPonderacion(10,20,30,30,10);
+    turis.SetTipo(4);
     Ca[25]=turis;
     //Diseño en comunicacion visual
     Carrera Visu;
     Visu.SetVacantes(100);
     Visu.SetUltimo(440.2);
-    Visu.SetPonderacion(10,40,30,10,10);
+    Visu.SetTipo(10);
     Ca[26]=Visu;
     //Diseño industrial
     Carrera disin;
     disin.SetVacantes(65);
     disin.SetUltimo(439.9);
-    disin.SetPonderacion(10,40,30,10,10);
+    disin.SetTipo(10);
     Ca[27]=disin;
 }
-float Ponderacion(Carrera C, Postulante P){//Funcion que saca la ponderacion
-    float A;//nem;ranking;leng;mat;ciencias;historia
-    A =( P.nem *C.GetPonderacion(0))+(P.ranking *C.GetPonderacion(1))+
-      ( P.lenguaje * C.GetPonderacion(2))+(P.mate *C.GetPonderacion(3))+
-      ( P.ciencias *C.GetPonderacion(4));
-    A = A / 100;
-    return A;
+void Ponderacion(Postulante P, tip *A[12]){
+    (*A[0]).pondera=(P.nem*15+P.ranking*20+P.lenguaje*30+P.mate*25+P.ciencias*10)/100;
+    (*A[1]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*40+P.mate*10+P.ciencias*10)/100;
+    (*A[2]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*30+P.mate*15+P.ciencias*15)/100;
+    (*A[3]).pondera=(P.nem*10+P.ranking*20+P.lenguaje*30+P.mate*30+P.ciencias*10)/100;
+    (*A[4]).pondera=(P.nem*15+P.ranking*25+P.lenguaje*20+P.mate*20+P.ciencias*20)/100;
+    (*A[5]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*15+P.mate*35+P.ciencias*10)/100;
+    (*A[6]).pondera=(P.nem*15+P.ranking*35+P.lenguaje*20+P.mate*20+P.ciencias*10)/100;
+    (*A[7]).pondera=(P.nem*15+P.ranking*25+P.lenguaje*20+P.mate*30+P.ciencias*10)/100;
+    (*A[8]).pondera=(P.nem*10+P.ranking*25+P.lenguaje*15+P.mate*30+P.ciencias*20)/100;
+    (*A[9]).pondera=(P.nem*10+P.ranking*40+P.lenguaje*30+P.mate*10+P.ciencias*10)/100;
+    (*A[10]).pondera=(P.nem*20+P.ranking*30+P.lenguaje*20+P.mate*10+P.ciencias*20)/100;
+    (*A[11]).pondera=(P.nem*10+P.ranking*25+P.lenguaje*20+P.mate*35+P.ciencias*10)/100;
+    (*A[0]).tipo=1;
+    (*A[1]).tipo=2;
+    (*A[2]).tipo=3;
+    (*A[3]).tipo=4;
+    (*A[4]).tipo=5;
+    (*A[5]).tipo=6;
+    (*A[6]).tipo=7;
+    (*A[7]).tipo=8;
+    (*A[8]).tipo=9;
+    (*A[9]).tipo=10;
+    (*A[10]).tipo=11;
+    (*A[11]).tipo=12;
+    quicksort_vect((*A),0,11); //Al final están los mayores 11>10
 }
+
+void quicksort_vect(tip x[12],int first,int last)
+{
+    tip temp;
+    int j,i,pivot;
+
+    if(first<last){
+         pivot=first;
+         i=first;
+         j=last;
+
+         while(i<j){
+             while(x[i].pondera<=x[pivot].pondera&&i<last){
+                 i++;}
+             while(x[j].pondera>x[pivot].pondera){
+                 j--;}
+             if(i<j){
+                 temp=x[i];
+                  x[i]=x[j];
+                  x[j]=temp;
+             }
+         }
+
+         temp=x[pivot];
+         x[pivot]=x[j];
+         x[j]=temp;
+         quicksort_vect(x,first,j-1);
+         quicksort_vect(x,j+1,last);
+    }
+}
+
+
 
 std::vector<int> obtenerlinea(std::string fila){ 
     std::vector<int> arreglo;                           
@@ -231,39 +282,8 @@ void quicksort(Carrera (*x),int prim,int ult){
     }
 }
 
-/*void entraste(Carrera Ca[], std::vector<Postulante> (*P)){
-    int prom=(persona[3]+persona[4])/2;
-    if(prom>=450){
-        float Pond;
-        for(int i=0;i<27;i++){
-            Pond=Ponderacion(Ca[i],persona);
-            if(Pond>=Ca[i].GetUltimo()){
-                Postulante A = llenarPostulante(persona,Pond);
-                if(Ca[i].GetVacantes()>0){
-                    Ca[i].llenarPost(A);
-                    Ca[i].SetActVacantes((Ca[i].GetActVacantes()+1));
-                    Ca[i].SetVacantes((Ca[i].GetVacantes()-1));
-                }else{
-                    quicksort((&Ca[i]),0,Ca[i].GetActVacantes()-1);
-                    Ca[i].SetUltimo(Ca[i].GetPostulantes(Ca[i].GetActVacantes()).pond);
-                    if(Pond>Ca[i].GetUltimo()){
-                        Postulante B;
-                        B=Ca[i].GetPostulantes(Ca[i].GetActVacantes()-1);
-                        Ca[i].SetPostulantes(A, Ca[i].GetActVacantes()-1);
-                        (*P).push_back(B);
-                        quicksort((&Ca[i]),0,Ca[i].GetActVacantes()-1);
-                        i=28;
-                        //ASI TERMINA
-                    }
-                }
-            }
-        }
-    }
-}*/
-
-void entraste(Carrera Ca[], std::vector<Postulante> P){
+/*void entraste(Carrera Ca[], std::vector<Postulante> P){
     int c=0;
-    std::cout<<P.size()<<std::endl;
     for(int i=0;i<int(P.size());i++){ //<int(P.size())
         float prom=( P[i].lenguaje + P[i].mate )/2;
         //std::cout<<"Vacantes: "<<Ca[0].GetVacantes()<<std::endl;
@@ -301,6 +321,10 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
         }
         //std::cout<<"Vamos en ("<<i<<"/2999)"<<std::endl;
     }
+}*/
+
+void entraste(Carrera Ca[], std::vector<Postulante> P){
+
 }
 
 

@@ -18,8 +18,8 @@ Postulante Carrera::GetPostulantes(int i){
 float Carrera::GetUltimo(){
     return ultimo;
 }
-int Carrera::GetPonderacion(int i){
-    return ponderacion[i];
+int Carrera::GetTipo(){
+    return tipo;
 }
 //Funciones para agregar
 void Carrera::SetVacantes(int v){
@@ -37,10 +37,6 @@ void Carrera::llenarPost(Postulante B){
 void Carrera::SetUltimo(float U){
     ultimo = U;
 }
-void Carrera::SetPonderacion(int Nem, int Rank, int Leng, int Mat, int Cs){
-    ponderacion.push_back(Nem);
-    ponderacion.push_back(Rank);
-    ponderacion.push_back(Leng);
-    ponderacion.push_back(Mat);
-    ponderacion.push_back(Cs);
+void Carrera::SetTipo(int tip){
+    tipo=tip;
 }

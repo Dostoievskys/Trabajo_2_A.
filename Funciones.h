@@ -5,10 +5,15 @@
 
 #include "Carrera.h"
 
+typedef struct{
+    float pondera;
+    int tipo;
+}tip;
+
 void participantes();
 void LlenarDatos(Carrera []);
 std::vector<int> obtenerlinea(std::string fila);
-float Ponderacion(Carrera, std::vector<int>);
+void Ponderacion(Postulante , tip *[12]);
 /**
  * Funcion de Ordenamiento
 */
@@ -18,7 +23,7 @@ Postulante llenarPostulante(std::vector<int>);
 void SetPond(Postulante *, float );
 std::vector<int> vectorint(Postulante);
 bool ValidarRut(std::string rut);
-
+void quicksort_vect(tip [12],int, int);
 void probando(Carrera []);
 
 #endif
