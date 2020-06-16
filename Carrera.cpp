@@ -16,8 +16,8 @@ std::vector<std::string> Carrera::GetPostulantes(){
 float Carrera::GetUltimo(){
     return ultimo;
 }
-std::vector<int> Carrera::GetPonderacion(){
-    return ponderacion;
+int Carrera::GetTipo(){
+    return tipo;
 }
 //Funciones para agregar
 void Carrera::SetVacantes(int v){
@@ -29,10 +29,6 @@ void Carrera::SetPostulantes(std::string p, int i){
 void Carrera::SetUltimo(float U){
     ultimo = U;
 }
-void Carrera::SetPonderacion(int Nem, int Rank, int Leng, int Mat, int Cs){
-    ponderacion.at(0)=Nem;
-    ponderacion.at(1)=Rank;
-    ponderacion.at(2)=Leng;
-    ponderacion.at(3)=Mat;
-    ponderacion.at(4)=Cs;
+void Carrera::SetTipo(int tip){
+    tipo = tip;
 }

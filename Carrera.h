@@ -10,19 +10,19 @@ class Carrera{
         int vacantes;
         std::vector<std::string> postulantes;
         float ultimo;
-        std::vector<int> ponderacion;
+        int tipo;
     public:
         Carrera();
         //Funciones para obtener
         int GetVacantes();
         std::vector<std::string> GetPostulantes();
         float GetUltimo();
-        std::vector<int> GetPonderacion();
+        int GetTipo();
         //Funciones para agregar
         void SetVacantes(int);
         void SetPostulantes(std::string,int);
         void SetUltimo(float);
-        void SetPonderacion(int,int,int,int,int);
+        void SetTipo(int);
 };
 
 #endif

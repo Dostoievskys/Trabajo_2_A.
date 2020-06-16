@@ -13,12 +13,16 @@ using namespace std;
  * codigocarrera.txt almacenado en la ubicacion especificada
 */
 int main(int argc, char** argv){
+    std::string text[28] = {"21073.txt","21041.txt","21049.txt","21047.txt","21089.txt","21043.txt","21030.txt","21096.txt",
+    "21046.txt","21076.txt","21075.txt","21048.txt","21071.txt","21031.txt","21032.txt","21045.txt","21074.txt","21083.txt",
+    "21039.txt","21087.txt","21015.txt","21081.txt","21002.txt","21012.txt","21080.txt","21082.txt","21024.txt","21023.txt"};
     if(argc > 1){
         std::string op = argv[1];
         if(op == "1" && argc == 4){ //argc = 4 o 3 (llamada;opcion;ubicacion;ubicacion)
             std::string archivo(argv[2]);
             std::ifstream lectura(archivo);
-            //Escritura de los .txt por carrera 
+            std::ofstream Escribir(text[2]);
+            /**Escritura de los .txt por carrera
             std::ofstream Biotec("21073.txt");//Ing. Biotecnologia
             std::ofstream Compu("21041.txt");//Ing. civil computacion
             std::ofstream CsDatos("21049.txt");//Ing. civil ciencias de datos
@@ -46,7 +50,7 @@ int main(int argc, char** argv){
             std::ofstream IQuim("21080.txt");//Ing. Quimica
             std::ofstream Turis("21082.txt");//Ing. gestion turistica
             std::ofstream Visual("21024.txt");//Diseño comunicacion visual
-            std::ofstream Dindus("21023.txt");//diseño industrial
+            std::ofstream Dindus("21023.txt");//diseño industrial */
             //ACA EJECUTAR OPCION 1
             std::cout << std::endl << "CORRE 1" << std::endl;
         }
@@ -54,9 +58,6 @@ int main(int argc, char** argv){
             if(op == "2" && argc == 4){
                 std::string rut = argv[2];
                 if(ValidarRut(rut)==true){
-                    std::string text[28] = {"21073.txt","21041.txt","21049.txt","21047.txt","21089.txt","21043.txt","21030.txt","21096.txt",
-                    "21046.txt","21076.txt","21075.txt","21048.txt","21071.txt","21031.txt","21032.txt","21045.txt","21074.txt","21083.txt",
-                    "21039.txt","21087.txt","21015.txt","21081.txt","21002.txt","21012.txt","21080.txt","21082.txt","21024.txt","21023.txt"};
                     /**
                     * Busqueda de un rut
                     * Pregunta: [programa 2 14123123 ruta_de_archivos]
