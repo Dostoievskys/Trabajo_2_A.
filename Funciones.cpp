@@ -15,6 +15,12 @@ void participantes(){
 }
 
 void LlenarDatos(Carrera Ca[]){//Datos de las carreras
+    //Administracion Publica
+    Carrera AdmiP;
+    AdmiP.SetVacantes(35);
+    AdmiP.SetUltimo(513);
+    AdmiP.SetTipo(1);
+    Ca[4]=AdmiP;
     //Ing en biotecnologia 
     Carrera Biotec;
     Biotec.SetVacantes(60);
@@ -39,12 +45,6 @@ void LlenarDatos(Carrera Ca[]){//Datos de las carreras
     Arqui.SetUltimo(527.4);
     Arqui.SetTipo(5);
     Ca[3]=Arqui;
-    //Administracion Publica
-    Carrera AdmiP;
-    AdmiP.SetVacantes(35);
-    AdmiP.SetUltimo(513);
-    AdmiP.SetTipo(1);
-    Ca[4]=AdmiP;
     //Trabajo Social
     Carrera Social;
     Social.SetVacantes(95);
@@ -184,32 +184,32 @@ void LlenarDatos(Carrera Ca[]){//Datos de las carreras
     disin.SetTipo(10);
     Ca[27]=disin;
 }
-void Ponderacion(Postulante P, tip *A[12]){
-    (*A[0]).pondera=(P.nem*15+P.ranking*20+P.lenguaje*30+P.mate*25+P.ciencias*10)/100;
-    (*A[1]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*40+P.mate*10+P.ciencias*10)/100;
-    (*A[2]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*30+P.mate*15+P.ciencias*15)/100;
-    (*A[3]).pondera=(P.nem*10+P.ranking*20+P.lenguaje*30+P.mate*30+P.ciencias*10)/100;
-    (*A[4]).pondera=(P.nem*15+P.ranking*25+P.lenguaje*20+P.mate*20+P.ciencias*20)/100;
-    (*A[5]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*15+P.mate*35+P.ciencias*10)/100;
-    (*A[6]).pondera=(P.nem*15+P.ranking*35+P.lenguaje*20+P.mate*20+P.ciencias*10)/100;
-    (*A[7]).pondera=(P.nem*15+P.ranking*25+P.lenguaje*20+P.mate*30+P.ciencias*10)/100;
-    (*A[8]).pondera=(P.nem*10+P.ranking*25+P.lenguaje*15+P.mate*30+P.ciencias*20)/100;
-    (*A[9]).pondera=(P.nem*10+P.ranking*40+P.lenguaje*30+P.mate*10+P.ciencias*10)/100;
-    (*A[10]).pondera=(P.nem*20+P.ranking*30+P.lenguaje*20+P.mate*10+P.ciencias*20)/100;
-    (*A[11]).pondera=(P.nem*10+P.ranking*25+P.lenguaje*20+P.mate*35+P.ciencias*10)/100;
-    (*A[0]).tipo=1;
-    (*A[1]).tipo=2;
-    (*A[2]).tipo=3;
-    (*A[3]).tipo=4;
-    (*A[4]).tipo=5;
-    (*A[5]).tipo=6;
-    (*A[6]).tipo=7;
-    (*A[7]).tipo=8;
-    (*A[8]).tipo=9;
-    (*A[9]).tipo=10;
-    (*A[10]).tipo=11;
-    (*A[11]).tipo=12;
-    quicksort_vect((*A),0,11); //Al final están los mayores 11>10
+void Ponderacion(Postulante P, tip A[12]){
+    (A[0]).pondera=(P.nem*15+P.ranking*20+P.lenguaje*30+P.mate*25+P.ciencias*10)/100;
+    (A[1]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*40+P.mate*10+P.ciencias*10)/100;
+    (A[2]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*30+P.mate*15+P.ciencias*15)/100;
+    (A[3]).pondera=(P.nem*10+P.ranking*20+P.lenguaje*30+P.mate*30+P.ciencias*10)/100;
+    (A[4]).pondera=(P.nem*15+P.ranking*25+P.lenguaje*20+P.mate*20+P.ciencias*20)/100;
+    (A[5]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*15+P.mate*35+P.ciencias*10)/100;
+    (A[6]).pondera=(P.nem*15+P.ranking*35+P.lenguaje*20+P.mate*20+P.ciencias*10)/100;
+    (A[7]).pondera=(P.nem*15+P.ranking*25+P.lenguaje*20+P.mate*30+P.ciencias*10)/100;
+    (A[8]).pondera=(P.nem*10+P.ranking*25+P.lenguaje*15+P.mate*30+P.ciencias*20)/100;
+    (A[9]).pondera=(P.nem*10+P.ranking*40+P.lenguaje*30+P.mate*10+P.ciencias*10)/100;
+    (A[10]).pondera=(P.nem*20+P.ranking*30+P.lenguaje*20+P.mate*10+P.ciencias*20)/100;
+    (A[11]).pondera=(P.nem*10+P.ranking*25+P.lenguaje*20+P.mate*35+P.ciencias*10)/100;
+    (A[0]).tipo=1;
+    (A[1]).tipo=2;
+    (A[2]).tipo=3;
+    (A[3]).tipo=4;
+    (A[4]).tipo=5;
+    (A[5]).tipo=6;
+    (A[6]).tipo=7;
+    (A[7]).tipo=8;
+    (A[8]).tipo=9;
+    (A[9]).tipo=10;
+    (A[10]).tipo=11;
+    (A[11]).tipo=12;
+    quicksort_vect((A),0,11); //Al final están los mayores 11>10
 }
 
 void quicksort_vect(tip x[12],int first,int last)
@@ -324,9 +324,41 @@ void quicksort(Carrera (*x),int prim,int ult){
 }*/
 
 void entraste(Carrera Ca[], std::vector<Postulante> P){
+    int n=0;
+    for(int i=0; i<int(P.size()); i++){
+        int prom=P[i].lenguaje+P[i].mate;
+        prom=prom/2;
+        if(prom>=450){
+            tip ponder[12];
+            Ponderacion(P[i], ponder);
+            for(int j=12; j>0; j--){
+                if(ponder[11].tipo==j){
+                    if(j==1 || j==2 || j==3 || j==5 || j==7 || j==11){
+                        if(ponder[11].pondera > Ca[j].GetUltimo()){
+                            if(Ca[j].GetVacantes()>0){
+                                Ca[j].llenarPost(P[i]);
+                                Ca[j].SetActVacantes((Ca[j].GetActVacantes()+1));
+                                Ca[j].SetVacantes((Ca[j].GetVacantes()-1));
+                                if(Ca[j].GetVacantes()==0){
+                                    quicksort((&Ca[j]),0,Ca[j].GetActVacantes()-1);
+                                    Ca[j].SetUltimo(Ca[j].GetPostulantes(Ca[j].GetActVacantes()-1).pond);
+                                }
+                            }else{
+                                Postulante aux=Ca[j].GetPostulantes(Ca[j].GetActVacantes()-1);
+                                Ca[j].SetPostulantes(P[i],Ca[j].GetActVacantes()-1);
+                                quicksort((&Ca[j]),0,Ca[j].GetActVacantes()-1);
+                                P.erase(P.begin()+i);
+                                P.push_back(aux);
+                            }
+                        }
+                    }
 
+                    j=0;
+                }
+            }
+        }
+    }
 }
-
 
 
 

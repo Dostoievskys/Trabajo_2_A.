@@ -29,7 +29,8 @@ void Carrera::SetActVacantes(int v){
     actualvac=v;
 }
 void Carrera::SetPostulantes(Postulante B, int i){
-    P.at(i)=B;
+    //P.at(i)=B;
+    P[i]=B;
 }
 void Carrera::llenarPost(Postulante B){
     P.push_back(B);

@@ -13,9 +13,9 @@ typedef struct{
 void participantes();
 void LlenarDatos(Carrera []);
 std::vector<int> obtenerlinea(std::string fila);
-void Ponderacion(Postulante , tip *[12]);
+void Ponderacion(Postulante , tip [12]);
 /**
- * Funcion de Ordenamiento
+ * Funcion de Ordenamientos
 */
 void quicksort(Carrera *,int,int);
 void entraste(Carrera [], std::vector<Postulante>);
