@@ -328,11 +328,13 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
         if(prom>=450){
             tip ponder[12];
             Ponderacion(P[i], ponder);
+            std::cout<<ponder[11].tipo<<std::endl;
             for(int j=12; j>0; j--){
-                if(ponder[11].tipo==j){
-                    if(j==1 || j==2 || j==3 || j==5 || j==7 || j==11){
+                if(ponder[10].tipo==j){
+                    if(j==1 || j==3 || j==5 || j==7 || j==11 || j==2){
                         if(ponder[11].pondera > Ca[j].GetUltimo()){
                             if(Ca[j].GetVacantes()>0){
+                                SetPond(&P[i],ponder[11].pondera);
                                 Ca[j].llenarPost(P[i]);
                                 Ca[j].SetActVacantes((Ca[j].GetActVacantes()+1));
                                 Ca[j].SetVacantes((Ca[j].GetVacantes()-1));
@@ -344,13 +346,12 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
                                 Postulante aux=Ca[j].GetPostulantes(Ca[j].GetActVacantes()-1);
                                 Ca[j].SetPostulantes(P[i],Ca[j].GetActVacantes()-1);
                                 quicksort((&Ca[j]),0,Ca[j].GetActVacantes()-1);
+                                Ca[j].SetUltimo(Ca[j].GetPostulantes(Ca[j].GetActVacantes()-1).pond);
                                 P.erase(P.begin()+i);
                                 P.push_back(aux);
                             }
                         }
                     }
-
-                    j=0;
                 }
             }
         }

@@ -37,8 +37,8 @@ int main(int argc, char** argv){
                     std::string salida = std::to_string(Ca[0].GetPostulantes(j).rut) + ";" + std::to_string(Ca[0].GetPostulantes(j).pond);
                     uno << salida << std::endl;
                 }
-                for(int q=0; q < Ca[1].GetActVacantes();q++){ //Creamos el archivo ordenado
-                    std::string salida = std::to_string(Ca[1].GetPostulantes(q).rut) + ";" + std::to_string(Ca[1].GetPostulantes(q).pond);
+                for(int q=0; q < Ca[17].GetActVacantes();q++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[17].GetPostulantes(q).rut) + ";" + std::to_string(Ca[17].GetPostulantes(q).pond);
                     dos << salida << std::endl;
                 }
                 for(int j=0; j < Ca[3].GetActVacantes();j++){ //Creamos el archivo ordenado
