@@ -184,6 +184,7 @@ void LlenarDatos(Carrera Ca[]){//Datos de las carreras
     indus.SetTipo(12);
     Ca[27]=indus;
 }
+
 void Ponderacion(Postulante P, tip A[12]){
     (A[0]).pondera=(P.nem*15+P.ranking*20+P.lenguaje*30+P.mate*25+P.ciencias*10)/100;
     (A[1]).pondera=(P.nem*20+P.ranking*20+P.lenguaje*40+P.mate*10+P.ciencias*10)/100;
@@ -212,8 +213,7 @@ void Ponderacion(Postulante P, tip A[12]){
     quicksort_vect((A),0,11); //Al final están los mayores 11>10
 }
 
-void quicksort_vect(tip x[12],int first,int last)
-{
+void quicksort_vect(tip x[12],int first,int last){
     tip temp;
     int j,i,pivot;
 
@@ -241,8 +241,6 @@ void quicksort_vect(tip x[12],int first,int last)
          quicksort_vect(x,j+1,last);
     }
 }
-
-
 
 std::vector<int> obtenerlinea(std::string fila){ 
     std::vector<int> arreglo;                           
@@ -324,7 +322,6 @@ void quicksort(Carrera (*x),int prim,int ult){
 }*/
 
 void entraste(Carrera Ca[], std::vector<Postulante> P){
-    int n=0;
     for(int i=0; i<int(P.size()); i++){
         int prom=P[i].lenguaje+P[i].mate;
         prom=prom/2;
@@ -359,8 +356,6 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
         }
     }
 }
-
-
 
 Postulante llenarPostulante(std::vector<int> persona){
     Postulante A;
