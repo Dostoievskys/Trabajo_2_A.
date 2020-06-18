@@ -26,5 +26,6 @@ bool ValidarRut(std::string rut);
 void quicksort_vect(tip [12],int, int);
 void probando(Carrera []);
 void llenarCarr(Carrera *, std::vector<Postulante> &, int, float);
+bool Busqueda(std::string, std::string);
 
 #endif

@@ -427,3 +427,24 @@ bool ValidarRut(std::string rut){
     return false;
   }
 }
+
+bool Busqueda(std::string r, std::string arch){ //Recibe el rut y el nombre del archivo
+    std::ifstream lec(arch);
+    int cont=0; //variable para la linea
+    if (lec) {
+        for (std::string linea; getline(lec,linea) ; ){ //Lee la linea hasta el punto y coma
+            cont = cont + 1; //Contador para la linea
+            std::stringstream ss(linea); //La linea que esta leyendo 17424518;639.66667 -> ss
+            std::string rut; //Variable para guardar el rut que estoy leyendo
+            std::getline(ss, rut, ';'); //Lo que quiero separar, donde lo guardo, que lo separa
+            if(r==rut){
+                //Mostrar linea donde se encuentra, y el nombre del archivo donde se encontro
+                std::cout<<"Se encontro el rut en: " << arch << std::endl;
+                std::cout<<"Rut: "<<rut<<std::endl;
+                std::cout<<"Posicion: "<<cont<<std::endl;//Linea donde esta el archivo
+                return true;
+            }
+        }
+    }
+    return false;
+}

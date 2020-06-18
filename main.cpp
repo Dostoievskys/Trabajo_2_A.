@@ -7,7 +7,8 @@
 #include "Carrera.h"
 #include "Funciones.h"
 
-//Probar con ./dist/programa 1 ./archivos/puntajes.txt ./carreras/
+//Probar con ./dist/programa 1 ./archivos/puntajes.txt ./carreras
+//Probar con ./dist/programa 2 16171318 ./carreras
 
 int main(int argc, char** argv){
     //Arreglo con los codigos de las carreras
@@ -42,18 +43,30 @@ int main(int argc, char** argv){
                     }
                 }
             }
-
-            std::cout << std::endl << "CORRE 1" << std::endl;
-        }else{
+            std::cout << std::endl << "Los archivos se crearon correctamente" << std::endl;
+        }
+        else{
             if(op == "2" && argc == 4){
                 std::string rut = argv[2];
+                std::string direc = argv[3];
+                bool Resultado;
                 if(ValidarRut(rut)==true){
-                  //ACA EJECUTAR OPCION 2: BUSQUEDA POR RUT
-                }else{
+                    for(int i=0; i<28;i++){
+                        std::string rute(direc + "/" + codigo[i]);
+                        Resultado = Busqueda(rut,rute);
+                        if(Resultado == true){
+                            i=28;
+                        }
+                    }
+                    if(Resultado == false){
+                        std::cout<<"No se encontro el rut"<<std::endl;
+                    }    
+                }
+                else{//Mensaje cuando el rut es invalido
                   std::cout << std::endl << "RUT INVALIDO" << std::endl;
                 }
-                std::cout << std::endl << "CORRE 2" << std::endl;
-            }else{
+            }
+            else{//Mensajes cuando no se ingresan la cantidad adecuada de datos
                 if(argc != 4){
                     if(op == "2" || op == "1"){
                         std::cout << std::endl << "Ingrese la cantidad correcta de datos" << std::endl;
@@ -64,7 +77,8 @@ int main(int argc, char** argv){
                 }      
             }
         }
-    }else{ //Se muestran participantes
+    }
+    else{ //Se muestran participantes
             participantes();
         }
     return EXIT_SUCCESS;
