@@ -7,6 +7,7 @@
 struct Postulante{
         int rut, nem, lenguaje, mate, ciencias, ranking;
         float pond;
+        bool entro;
     };
 
 class Carrera{

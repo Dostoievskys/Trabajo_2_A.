@@ -13,7 +13,7 @@ int main(int argc, char** argv){
     std::vector<Postulante> P;
     if(argc > 1){
         std::string op = argv[1];
-        Carrera Ca[27];
+        Carrera Ca[28];
         if(op == "1" && argc == 4){
             std::cout << std::endl << "CORRE 1" << std::endl;
             LlenarDatos(Ca);
@@ -37,12 +37,12 @@ int main(int argc, char** argv){
                     std::string salida = std::to_string(Ca[0].GetPostulantes(j).rut) + ";" + std::to_string(Ca[0].GetPostulantes(j).pond);
                     uno << salida << std::endl;
                 }
-                for(int q=0; q < Ca[17].GetActVacantes();q++){ //Creamos el archivo ordenado
-                    std::string salida = std::to_string(Ca[17].GetPostulantes(q).rut) + ";" + std::to_string(Ca[17].GetPostulantes(q).pond);
+                for(int q=0; q < Ca[1].GetActVacantes();q++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[1].GetPostulantes(q).rut) + ";" + std::to_string(Ca[1].GetPostulantes(q).pond);
                     dos << salida << std::endl;
                 }
-                for(int j=0; j < Ca[3].GetActVacantes();j++){ //Creamos el archivo ordenado
-                    std::string salida = std::to_string(Ca[3].GetPostulantes(j).rut) + ";" + std::to_string(Ca[3].GetPostulantes(j).pond);
+                for(int j=0; j < Ca[2].GetActVacantes();j++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[2].GetPostulantes(j).rut) + ";" + std::to_string(Ca[2].GetPostulantes(j).pond);
                     tres << salida << std::endl;
                 }
             }
