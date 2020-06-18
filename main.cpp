@@ -33,16 +33,16 @@ int main(int argc, char** argv){
                 }
                 entraste(Ca,P);
 
-                for(int j=0; j < Ca[0].GetActVacantes();j++){ //Creamos el archivo ordenado
-                    std::string salida = std::to_string(Ca[0].GetPostulantes(j).rut) + ";" + std::to_string(Ca[0].GetPostulantes(j).pond);
+                for(int j=0; j < Ca[22].GetActVacantes();j++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[22].GetPostulantes(j).rut) + ";" + std::to_string(Ca[22].GetPostulantes(j).pond);
                     uno << salida << std::endl;
                 }
-                for(int q=0; q < Ca[1].GetActVacantes();q++){ //Creamos el archivo ordenado
-                    std::string salida = std::to_string(Ca[1].GetPostulantes(q).rut) + ";" + std::to_string(Ca[1].GetPostulantes(q).pond);
+                for(int q=0; q < Ca[15].GetActVacantes();q++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[15].GetPostulantes(q).rut) + ";" + std::to_string(Ca[15].GetPostulantes(q).pond);
                     dos << salida << std::endl;
                 }
-                for(int j=0; j < Ca[2].GetActVacantes();j++){ //Creamos el archivo ordenado
-                    std::string salida = std::to_string(Ca[2].GetPostulantes(j).rut) + ";" + std::to_string(Ca[2].GetPostulantes(j).pond);
+                for(int j=0; j < Ca[16].GetActVacantes();j++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[16].GetPostulantes(j).rut) + ";" + std::to_string(Ca[16].GetPostulantes(j).pond);
                     tres << salida << std::endl;
                 }
             }

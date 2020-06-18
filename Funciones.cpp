@@ -210,7 +210,7 @@ void Ponderacion(Postulante P, tip A[12]){
     (A[9]).tipo=10;
     (A[10]).tipo=11;
     (A[11]).tipo=12;
-    quicksort_vect((A),0,11); //Al final están los mayores 11>10
+    quicksort_vect((A),0,11);
 }
 
 void quicksort_vect(tip x[12],int first,int last){
@@ -257,10 +257,10 @@ void quicksort(Carrera (*x),int prim,int ult){
     Postulante aux;
     int j,i,pivot; 
     if(prim<ult){
-         pivot=prim;
-         i=prim;
-         j=ult;
-         while(i<j){
+        pivot=prim;
+        i=prim;
+        j=ult;
+        while(i<j){
             while((*x).GetPostulantes(i).pond >= (*x).GetPostulantes(pivot).pond && i < ult){
                 i++;
             }
@@ -272,54 +272,13 @@ void quicksort(Carrera (*x),int prim,int ult){
                 (*x).SetPostulantes(aux, j);
             }
         }
-         aux=(*x).GetPostulantes(pivot);
-         (*x).SetPostulantes((*x).GetPostulantes(j), pivot);
-         (*x).SetPostulantes(aux, j);
-         quicksort(&(*x),prim,j-1);
-         quicksort(&(*x),j+1,ult);
+        aux=(*x).GetPostulantes(pivot);
+        (*x).SetPostulantes((*x).GetPostulantes(j), pivot);
+        (*x).SetPostulantes(aux, j);
+        quicksort(&(*x),prim,j-1);
+        quicksort(&(*x),j+1,ult);
     }
 }
-
-/*void entraste(Carrera Ca[], std::vector<Postulante> P){
-    int c=0;
-    for(int i=0;i<int(P.size());i++){ //<int(P.size())
-        float prom=( P[i].lenguaje + P[i].mate )/2;
-        //std::cout<<"Vacantes: "<<Ca[0].GetVacantes()<<std::endl;
-        if(prom>=450){
-            float pond;
-            for(int j=0;j<27;j++){
-                pond=Ponderacion(Ca[j],P[i]);
-                //std::cout<<"Vamos en "<<j<<":"<<Ca[j].GetVacantes()<<" - "<<Ca[j].GetActVacantes()<<std::endl;
-                if(pond>Ca[j].GetUltimo()){
-                    SetPond((&P[i]), pond);
-                    if(Ca[j].GetVacantes()>0){
-                        Ca[j].llenarPost(P[i]);
-                        Ca[j].SetActVacantes((Ca[j].GetActVacantes()+1));
-                        Ca[j].SetVacantes((Ca[j].GetVacantes()-1));
-                        //std::cout<<"CONTADOR"<<c<<std::endl;
-                        c++;
-                        if(Ca[j].GetVacantes()==0){
-                            quicksort((&Ca[j]),0,Ca[j].GetActVacantes()-1);
-                            Ca[j].SetUltimo(Ca[j].GetPostulantes(Ca[j].GetActVacantes()-1).pond);
-                        }
-                    }else{
-                        if(pond>Ca[j].GetUltimo()){
-                            //Postulante B;
-                            //B=Ca[j].GetPostulantes((Ca[j].GetActVacantes()-1));
-                            Ca[j].SetPostulantes(P[i], (Ca[j].GetActVacantes()-1));
-                            //Falta ver que hago con el que saco "B"
-                            quicksort((&Ca[j]),0,Ca[j].GetActVacantes()-1);
-                            Ca[j].SetUltimo(Ca[j].GetPostulantes(Ca[j].GetActVacantes()).pond);
-                            //ASI TERMINA
-                        }  
-                    }
-                    j=30;
-                }
-            }
-        }
-        //std::cout<<"Vamos en ("<<i<<"/2999)"<<std::endl;
-    }
-}*/
 
 void entraste(Carrera Ca[], std::vector<Postulante> P){
     for(int i=0; i<int(P.size()); i++){
@@ -328,7 +287,6 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
         if(prom>=450){
             tip ponder[12];
             Ponderacion(P[i], ponder);
-            //std::cout<<ponder[10].pondera<<" - "<<ponder[11].pondera<<std::endl;
             for(int t=11; t>8; t--){
                 if(P[i].entro==false){
                     for(int j=12; j>0; j--){
@@ -356,6 +314,54 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
                             if(j==11){
                                 llenarCarr(&Ca[17], P, i, ponder[t].pondera);
                                 j=0;
+                            }//REVISAR J==12, EL RESTO CREO QUE FUNCIONA BIEN
+                            if(j==4){//3,4,5,6
+                                for(int h=3; h<7;h++){
+                                    if(P[i].entro==false){
+                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
+                                    }
+                                }
+                                j=0;
+                            }
+                            if(j==6){//8,9
+                                for(int h=8; h<10;h++){
+                                    if(P[i].entro==false){
+                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
+                                    }
+                                }
+                                j=0;
+                            }
+                            if(j==8){//11,12
+                                for(int h=11; h<13;h++){
+                                    if(P[i].entro==false){
+                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
+                                    }
+                                }
+                                j=0;
+                            }
+                            if(j==9){//13,14
+                                for(int h=13; h<15;h++){
+                                    if(P[i].entro==false){
+                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
+                                    }
+                                }
+                                j=0;
+                            }
+                            if(j==10){//15,16
+                                for(int h=15; h<17;h++){
+                                    if(P[i].entro==false){
+                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
+                                    }
+                                }
+                                j=0;
+                            }
+                            if(j==12){//18,27
+                                for(int h=18; h<28;h++){
+                                    if(P[i].entro==false){
+                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
+                                    }
+                                }
+                                j=0;
                             }
                         }
                     }
@@ -368,14 +374,14 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
 //j=Posicion Carrera
 //pon=ponder.pondera
 
-void llenarCarr(Carrera (*Ca), std::vector<Postulante> P, int i, float pon){
+void llenarCarr(Carrera (*Ca), std::vector<Postulante> &P, int i, float pon){
     if(pon > (*Ca).GetUltimo()){
         SetPond((&P[i]),pon);
         if((*Ca).GetVacantes()>0){
             (*Ca).llenarPost(P[i]);
             (*Ca).SetActVacantes(((*Ca).GetActVacantes()+1));
             (*Ca).SetVacantes(((*Ca).GetVacantes()-1));
-            P[i].entro=true;
+            (P[i]).entro=true;
             if((*Ca).GetVacantes()==0){
                 quicksort((&(*Ca)),0,(*Ca).GetActVacantes()-1);
                 (*Ca).SetUltimo((*Ca).GetPostulantes((*Ca).GetActVacantes()-1).pond);

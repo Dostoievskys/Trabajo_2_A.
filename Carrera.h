@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 struct Postulante{
-        int rut, nem, lenguaje, mate, ciencias, ranking;
-        float pond;
+        int rut;
+        float pond, nem, lenguaje, mate, ciencias, ranking;
         bool entro;
     };
 
