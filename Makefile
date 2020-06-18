@@ -2,12 +2,12 @@ CXX = g++
 CXXFLAGS = -g3 -Wall
 MKDIR = mkdir -p
 
-LIBS = -lm 
+LIBS = -lm
 
 directorios:
 	$(MKDIR) build dist
 
-main.o: directorios main.cpp
+main.o: directorios main.cpp 
 	$(CXX) $(CXXFLAGS) -c main.cpp -o build/main.o
 
 Carrera.o: directorios Carrera.cpp Carrera.h
@@ -21,6 +21,6 @@ all: clean main.o Funciones.o Carrera.o
 	rm -fr build
 
 clean:
-	rm -fr *.o a.out core programa dist build
+	rm -fr *.o a.out core programa dist build uno.txt dos.txt tres.txt
 
 .DEFAULT_GOAL := all

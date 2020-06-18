@@ -7,68 +7,46 @@
 #include "Carrera.h"
 #include "Funciones.h"
 
-using namespace std;
-/**
- * Escritura del archivo
- * codigocarrera.txt almacenado en la ubicacion especificada
-*/
+//Probar con ./dist/programa 1 ./archivos/puntajes.txt ./archivos/
+
 int main(int argc, char** argv){
     std::vector<Postulante> P;
     if(argc > 1){
         std::string op = argv[1];
-        if(op == "1" && argc == 4){ //argc = 4 o 3 (llamada;opcion;ubicacion;ubicacion)
-            LlenarDatos(); //RETURN VECTOR CA[];
-            std::string archivo(argv[2]);
-            std::ifstream lectura(archivo); //Lectura del archivo puntajes.cvs
-            //Escritura de los .txt por carrera 
-            std::ofstream Biotec("21073.txt");//Ing. Biotecnologia
-            std::ofstream Compu("21041.txt");//Ing. civil computacion
-            std::ofstream CsDatos("21049.txt");//Ing. civil ciencias de datos
-            std::ofstream Arqui("21047.txt");//Arquitectura
-            std::ofstream AdmiP("21089.txt");//Administracion Publica
-            std::ofstream Social("21043.txt");//Trabajo Social
-            std::ofstream Info("21030.txt");//Ing. informatica
-            std::ofstream Meca("21096.txt");//Ing. civil Mecanica
-            std::ofstream CsIng("21046.txt");//Bachillerato Ciencias ingenieria
-            std::ofstream CIndus("21076.txt");//Ing. civil industrial
-            std::ofstream Elec("21075.txt");//Ing. civil electronica
-            std::ofstream Cmrcial("21048.txt");//Ing. comercial
-            std::ofstream Proyec("21071.txt");//Dibujante proyectista
-            std::ofstream Geo("21031.txt");//Ing. geomensura
-            std::ofstream Contru("21032.txt");//Ing. construccion 
-            std::ofstream Indus("21045.txt");//Ing. Industrial
-            std::ofstream Civil("21074.txt");//Ing. civil obras civiles
-            std::ofstream Quim("21083.txt");//Quimica industrial
-            std::ofstream Alim("21039.txt");//Ing. industria alimentaria 
-            std::ofstream Preven("21087.txt");//Ing. civil prevencion de riesgos y medioambiente
-            std::ofstream Agro("21015.txt");//Ing. administracion agroindustrial
-            std::ofstream Inter("21081.txt");//Ing. comercio internacional
-            std::ofstream Biblio("21002.txt");//Bibliotecnologia y documentacion
-            std::ofstream Conta("21012.txt");//Contador publico y auditor
-            std::ofstream IQuim("21080.txt");//Ing. Quimica
-            std::ofstream Turis("21082.txt");//Ing. gestion turistica
-            std::ofstream Visual("21024.txt");//Diseño comunicacion visual
-            std::ofstream Dindus("21023.txt");//diseño industrial
-
-            if (lectura) {
-                for (std::string linea; getline(lectura,linea) ; ){
-                    std::vector<int> persona = obtenerlinea(linea);
-                    
-                    //llenarPostulante(persona, P);
-                    //Aqui quede...
-
-                    //Final
+        Carrera Ca[28];
+        if(op == "1" && argc == 4){
+            std::cout << std::endl << "CORRE 1" << std::endl;
+            LlenarDatos(Ca);
+            std::string arch(argv[2]);
+            std::ifstream lectura(arch);
+            std::ofstream uno("uno.txt"); 
+            std::ofstream dos("dos.txt");
+            std::ofstream tres("tres.txt");
+            if (lectura) { 
+                std::vector<int> persona;
+                  
+                for (std::string linea; getline(lectura,linea) ; ) {
+                    persona = obtenerlinea(linea);
+                    Postulante A=llenarPostulante(persona);
+                    P.push_back(A);
                     persona.clear();
-                    P.erase (P.begin());
                 }
-                /*for(int i=0; i<cont;i++){ //Creamos el archivo ordenado
-                    B=E[i];
+                entraste(Ca,P);
 
-                    std::string salida = std::to_string(B.GetRut()) + ";" + std::to_string(B.GetPromedio());
-                    escritura << salida << std::endl;
-                }*/
+                for(int j=0; j < Ca[22].GetActVacantes();j++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[22].GetPostulantes(j).rut) + ";" + std::to_string(Ca[22].GetPostulantes(j).pond);
+                    uno << salida << std::endl;
+                }
+                for(int q=0; q < Ca[15].GetActVacantes();q++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[15].GetPostulantes(q).rut) + ";" + std::to_string(Ca[15].GetPostulantes(q).pond);
+                    dos << salida << std::endl;
+                }
+                for(int j=0; j < Ca[16].GetActVacantes();j++){ //Creamos el archivo ordenado
+                    std::string salida = std::to_string(Ca[16].GetPostulantes(j).rut) + ";" + std::to_string(Ca[16].GetPostulantes(j).pond);
+                    tres << salida << std::endl;
+                }
             }
-            //ACA EJECUTAR OPCION 1
+
             std::cout << std::endl << "CORRE 1" << std::endl;
         }else{
             if(op == "2" && argc == 4){
@@ -90,9 +68,9 @@ int main(int argc, char** argv){
                 }      
             }
         }
-    }
-    else{ //Se muestran participantes
+    }else{ //Se muestran participantes
             participantes();
         }
     return EXIT_SUCCESS;
 }
+

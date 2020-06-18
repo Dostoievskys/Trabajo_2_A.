@@ -2,24 +2,29 @@
 #define FUNCIONES_H
 #include <iostream>
 #include <vector>
+
 #include "Carrera.h"
 
-typedef struct Postulante{
-    int rut;
-    int pond;
-    int nem, lenguaje, mate, ciencias, ranking;
-};
+typedef struct{
+    float pondera;
+    int tipo;
+}tip;
 
 void participantes();
-std::vector<Carrera> LlenarDatos();
+void LlenarDatos(Carrera []);
 std::vector<int> obtenerlinea(std::string fila);
-float Ponderacion(Carrera C, std::vector<int> puntajes);
-bool ValidarRut(std::string rut);
+void Ponderacion(Postulante , tip [12]);
 /**
- * Funcion de Ordenamiento
+ * Funcion de Ordenamientos
 */
-//void quicksort(Carrera,int,int);
-//void entraste(std::vector<int> , std::vector<Carrera> , std::vector<Postulante> &);
-//void llenarPostulante(std::vector<int>, std::vector<Postulante> &);
+void quicksort(Carrera *,int,int);
+void entraste(Carrera [], std::vector<Postulante>);
+Postulante llenarPostulante(std::vector<int>);
+void SetPond(Postulante *, float );
+std::vector<int> vectorint(Postulante);
+bool ValidarRut(std::string rut);
+void quicksort_vect(tip [12],int, int);
+void probando(Carrera []);
+void llenarCarr(Carrera *, std::vector<Postulante> &, int, float);
 
 #endif
