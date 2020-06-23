@@ -4,23 +4,32 @@
 #include <iostream>
 #include <string>
 #include <vector>
+struct Postulante{
+        int rut;
+        float pond, nem, lenguaje, mate, ciencias, ranking;
+        bool entro;
+    };
 
 class Carrera{
     private:
         int vacantes;
-        std::vector<std::string> postulantes;
+        int actualvac;
+        std::vector<Postulante> P;
         float ultimo;
         int tipo;
     public:
         Carrera();
         //Funciones para obtener
         int GetVacantes();
-        std::vector<std::string> GetPostulantes();
+        int GetActVacantes();
+        Postulante GetPostulantes(int);
         float GetUltimo();
         int GetTipo();
         //Funciones para agregar
+        void llenarPost(Postulante );
         void SetVacantes(int);
-        void SetPostulantes(std::string,int);
+        void SetActVacantes(int);
+        void SetPostulantes(Postulante, int);
         void SetUltimo(float);
         void SetTipo(int);
 };
