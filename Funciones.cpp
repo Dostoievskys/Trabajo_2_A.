@@ -7,6 +7,7 @@
 #include "Carrera.h"
 #include "Funciones.h"
 
+//Funcion que muestra los participantes
 void participantes(){
     std::cout << std::endl << "=== Integrantes: ===" << std::endl;
     std::cout << std::endl << "Braulio Argandoña"  << std::endl;
