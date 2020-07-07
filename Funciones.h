@@ -17,15 +17,14 @@ void Ponderacion(Postulante , tip [12]);
 /**
  * Funcion de Ordenamientos
 */
-void quicksort(Carrera *,int,int);
+void quicksort(Carrera &,int,int);
 void entraste(Carrera [], std::vector<Postulante>);
 Postulante llenarPostulante(std::vector<int>);
-void SetPond(Postulante *, float );
 std::vector<int> vectorint(Postulante);
 bool ValidarRut(std::string rut);
 void quicksort_vect(tip [12],int, int);
 void probando(Carrera []);
-void llenarCarr(Carrera *, std::vector<Postulante> &, int, float);
+void llenarCarr(Carrera &, std::vector<Postulante> &,Postulante &, int &);
 bool Busqueda(std::string, std::string);
 
 #endif

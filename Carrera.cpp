@@ -28,9 +28,8 @@ void Carrera::SetVacantes(int v){
 void Carrera::SetActVacantes(int v){
     actualvac=v;
 }
-void Carrera::SetPostulantes(Postulante B, int i){
-    //P.at(i)=B;
-    P[i]=B;
+void Carrera::SetPostulantes(int i, int j){
+    std::swap(P[i],P[j]);
 }
 void Carrera::llenarPost(Postulante B){
     P.push_back(B);
@@ -40,4 +39,8 @@ void Carrera::SetUltimo(float U){
 }
 void Carrera::SetTipo(int tip){
     tipo=tip;
+}
+void Carrera::Reemplazo(Postulante A){
+    P.pop_back();
+    P.push_back(A);
 }

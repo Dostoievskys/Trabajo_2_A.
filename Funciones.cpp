@@ -7,7 +7,6 @@
 #include "Carrera.h"
 #include "Funciones.h"
 
-//Funcion que muestra los participantes
 void participantes(){
     std::cout << std::endl << "=== Integrantes: ===" << std::endl;
     std::cout << std::endl << "Braulio Argandoña"  << std::endl;
@@ -254,30 +253,32 @@ std::vector<int> obtenerlinea(std::string fila){
     return arreglo;
 }
 
-void quicksort(Carrera (*x),int prim,int ult){
-    Postulante aux;
+void quicksort(Carrera &x,int prim,int ult){
+    //Postulante aux;
     int j,i,pivot; 
     if(prim<ult){
         pivot=prim;
         i=prim;
         j=ult;
         while(i<j){
-            while((*x).GetPostulantes(i).pond >= (*x).GetPostulantes(pivot).pond && i < ult){
+            while(x.GetPostulantes(i).pond >= x.GetPostulantes(pivot).pond && i < ult){
                 i++;
             }
-            while((*x).GetPostulantes(j).pond <(*x).GetPostulantes(pivot).pond){
+            while(x.GetPostulantes(j).pond <x.GetPostulantes(pivot).pond){
                 j--;}
             if(i<j){
-                aux=(*x).GetPostulantes(i);
-                (*x).SetPostulantes((*x).GetPostulantes(j), i);
-                (*x).SetPostulantes(aux, j);
+                //aux=x.GetPostulantes(i);
+                //x.SetPostulantes(x.GetPostulantes(j), i);
+                //x.SetPostulantes(aux, j);
+                x.SetPostulantes(j,i);
             }
         }
-        aux=(*x).GetPostulantes(pivot);
-        (*x).SetPostulantes((*x).GetPostulantes(j), pivot);
-        (*x).SetPostulantes(aux, j);
-        quicksort(&(*x),prim,j-1);
-        quicksort(&(*x),j+1,ult);
+        //aux=x.GetPostulantes(pivot);
+        //x.SetPostulantes(x.GetPostulantes(j), pivot);
+        //x.SetPostulantes(aux, j);
+        x.SetPostulantes(pivot, j);
+        quicksort(x,prim,j-1);
+        quicksort(x,j+1,ult);
     }
 }
 
@@ -288,81 +289,66 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
         if(prom>=450){
             tip ponder[12];
             Ponderacion(P[i], ponder);
-            for(int t=11; t>8; t--){
+            for(int t=11; t>0; t--){
                 if(P[i].entro==false){
-                    for(int j=12; j>0; j--){
-                        if(ponder[t].tipo==j){
-                            if(j==1){
-                                llenarCarr(&Ca[0], P, i, ponder[t].pondera);
-                                j=0;
+                    P[i].pond=ponder[t].pondera;
+                    if(ponder[t].tipo==1){
+                        llenarCarr(Ca[0], P, P[i], i);
+                    }
+                    if(ponder[t].tipo==2){
+                        llenarCarr(Ca[1], P, P[i], i);
+                    }
+                    if(ponder[t].tipo==3){
+                        llenarCarr(Ca[2], P, P[i], i);
+                    }
+                    if(ponder[t].tipo==5){
+                        llenarCarr(Ca[7], P, P[i], i);
+                    }
+                    if(ponder[t].tipo==7){
+                        llenarCarr(Ca[10], P, P[i],i);
+                    }
+                    if(ponder[t].tipo==11){
+                        llenarCarr(Ca[17], P, P[i],i);
+                    }
+                    if(ponder[t].tipo==4){//3,4,5,6
+                        for(int h=3; h<7;h++){
+                            if(P[i].entro==false){
+                                llenarCarr(Ca[h], P, P[i],i);
                             }
-                            if(j==2){
-                                llenarCarr(&Ca[1], P, i, ponder[t].pondera);
-                                j=0;
+                        }
+                    }
+                    if(ponder[t].tipo==6){//8,9
+                        for(int h=8; h<10;h++){
+                            if(P[i].entro==false){
+                                llenarCarr(Ca[h], P, P[i], i);
                             }
-                            if(j==3){
-                                llenarCarr(&Ca[2], P, i, ponder[t].pondera);
-                                j=0;
+                        }
+                    }
+                    if(ponder[t].tipo==8){//11,12
+                        for(int h=11; h<13;h++){
+                            if(P[i].entro==false){
+                                llenarCarr(Ca[h], P, P[i], i);
                             }
-                            if(j==5){
-                                llenarCarr(&Ca[7], P, i, ponder[t].pondera);
-                                j=0;
+                        }
+                    }
+                    if(ponder[t].tipo==9){//13,14
+                        for(int h=13; h<15;h++){
+                            if(P[i].entro==false){
+                                llenarCarr(Ca[h], P, P[i], i );
                             }
-                            if(j==7){
-                                llenarCarr(&Ca[10], P, i, ponder[t].pondera);
-                                j=0;
+                        }
+                    }
+                    if(ponder[t].tipo==10){//15,16
+                        for(int h=15; h<17;h++){
+                            if(P[i].entro==false){
+                                llenarCarr(Ca[h], P, P[i], i);
                             }
-                            if(j==11){
-                                llenarCarr(&Ca[17], P, i, ponder[t].pondera);
-                                j=0;
-                            }//REVISAR J==12, EL RESTO CREO QUE FUNCIONA BIEN
-                            if(j==4){//3,4,5,6
-                                for(int h=3; h<7;h++){
-                                    if(P[i].entro==false){
-                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
-                                    }
-                                }
-                                j=0;
-                            }
-                            if(j==6){//8,9
-                                for(int h=8; h<10;h++){
-                                    if(P[i].entro==false){
-                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
-                                    }
-                                }
-                                j=0;
-                            }
-                            if(j==8){//11,12
-                                for(int h=11; h<13;h++){
-                                    if(P[i].entro==false){
-                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
-                                    }
-                                }
-                                j=0;
-                            }
-                            if(j==9){//13,14
-                                for(int h=13; h<15;h++){
-                                    if(P[i].entro==false){
-                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
-                                    }
-                                }
-                                j=0;
-                            }
-                            if(j==10){//15,16
-                                for(int h=15; h<17;h++){
-                                    if(P[i].entro==false){
-                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
-                                    }
-                                }
-                                j=0;
-                            }
-                            if(j==12){//18,27
-                                for(int h=18; h<28;h++){
-                                    if(P[i].entro==false){
-                                        llenarCarr(&Ca[h], P, i, ponder[t].pondera);
-                                    }
-                                }
-                                j=0;
+                        }
+                    }
+                    if(ponder[t].tipo==12){//18,27
+                        for(int h=18; h<28;h++){
+                            if(P[i].entro==false){
+                                llenarCarr(Ca[h], P, P[i], i);
                             }
                         }
                     }
@@ -371,30 +357,29 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
         }
     }
 }
-//i=Posicion Postulante
-//j=Posicion Carrera
-//pon=ponder.pondera
 
-void llenarCarr(Carrera (*Ca), std::vector<Postulante> &P, int i, float pon){
-    if(pon > (*Ca).GetUltimo()){
-        SetPond((&P[i]),pon);
-        if((*Ca).GetVacantes()>0){
-            (*Ca).llenarPost(P[i]);
-            (*Ca).SetActVacantes(((*Ca).GetActVacantes()+1));
-            (*Ca).SetVacantes(((*Ca).GetVacantes()-1));
-            (P[i]).entro=true;
-            if((*Ca).GetVacantes()==0){
-                quicksort((&(*Ca)),0,(*Ca).GetActVacantes()-1);
-                (*Ca).SetUltimo((*Ca).GetPostulantes((*Ca).GetActVacantes()-1).pond);
+
+void llenarCarr(Carrera &Ca, std::vector<Postulante> &A,Postulante &P, int &i){
+    if(P.pond > Ca.GetUltimo()){
+        P.entro=true;
+        if(Ca.GetVacantes()>0){
+            Ca.llenarPost(P);
+            Ca.SetActVacantes((Ca.GetActVacantes()+1));
+            Ca.SetVacantes((Ca.GetVacantes()-1));
+            if(Ca.GetVacantes()==0){
+                quicksort(Ca,0,Ca.GetActVacantes()-1);
+                Ca.SetUltimo(Ca.GetPostulantes(Ca.GetActVacantes()-1).pond);
             }
         }else{
-            Postulante aux=(*Ca).GetPostulantes((*Ca).GetActVacantes()-1);
+            Postulante aux=Ca.GetPostulantes(Ca.GetActVacantes()-1);
             aux.entro=false;
-            (*Ca).SetPostulantes(P[i],(*Ca).GetActVacantes()-1);
-            quicksort((&(*Ca)),0,(*Ca).GetActVacantes()-1);
-            (*Ca).SetUltimo((*Ca).GetPostulantes((*Ca).GetActVacantes()-1).pond);
-            P.erase(P.begin()+i);
-            P.push_back(aux);
+            Ca.Reemplazo(P);
+            quicksort(Ca,0,Ca.GetActVacantes()-1);
+            Ca.SetUltimo(Ca.GetPostulantes(Ca.GetActVacantes()-1).pond);
+            A.push_back(aux);
+            A.erase(A.begin()+2);
+            i--;
+            //llenarCarr(Ca, A, aux, i);
         }
     }
 }
@@ -414,10 +399,6 @@ Postulante llenarPostulante(std::vector<int> persona){
     A.pond=0;
     A.entro=false;
     return A;
-}
-
-void SetPond(Postulante *A, float ponde){
-    (*A).pond=ponde;
 }
 
 bool ValidarRut(std::string rut){

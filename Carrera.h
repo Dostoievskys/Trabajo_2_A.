@@ -29,9 +29,10 @@ class Carrera{
         void llenarPost(Postulante );
         void SetVacantes(int);
         void SetActVacantes(int);
-        void SetPostulantes(Postulante, int);
+        void SetPostulantes(int,int);
         void SetUltimo(float);
         void SetTipo(int);
+        void Reemplazo(Postulante);
 };
 
 #endif
