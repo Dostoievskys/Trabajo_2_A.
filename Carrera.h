@@ -4,10 +4,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
+/*
+ * Estructura de cada postulante
+*/
 struct Postulante{
         int rut;
         float pond, nem, lenguaje, mate, ciencias, ranking;
-        bool entro;
+        bool entro; //Estado de ingreso
     };
 
 class Carrera{
@@ -26,13 +29,13 @@ class Carrera{
         float GetUltimo();
         int GetTipo();
         //Funciones para agregar
-        void llenarPost(Postulante );
         void SetVacantes(int);
         void SetActVacantes(int);
-        void SetPostulantes(int,int);
+        void SetPostulantes(int,int); //Realiza un intercambio de postulantes
         void SetUltimo(float);
         void SetTipo(int);
-        void Reemplazo(Postulante);
+        void llenarPost(Postulante ); //Agrega nuevo postulante al final
+        void Reemplazo(Postulante); //Elimina el ultimo y agrega el nuevo postulante al final
 };
 
 #endif

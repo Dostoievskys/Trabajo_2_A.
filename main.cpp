@@ -7,18 +7,18 @@
 #include "Carrera.h"
 #include "Funciones.h"
 
-//Probar con ./dist/programa 1 ./archivos/puntajes.txt ./carreras
+//Probar con ./dist/programa 1 ./archivos/puntajes.csv ./carreras
 //Probar con ./dist/programa 2 16171318 ./carreras
 
 int main(int argc, char** argv){
-    //Arreglo con los codigos de las carreras
-    std::string codigo[28] = {"21089.txt","21002.txt","21012.txt","21048.txt","21015.txt","21081.txt","21082.txt","21047.txt",
-    "21032.txt","21074.txt","21087.txt","21073.txt","21039.txt","21083.txt","21080.txt","21024.txt","21023.txt","21043.txt",
-    "21049.txt","21041.txt","21030.txt","21096.txt","21046.txt","21076.txt","21075.txt","21071.txt","21031.txt","21045.txt"};
-    std::vector<Postulante> P; //Vector para postulantes
-    std::string op = argv[1]; //Opcion que ingresa el usuario
-    Carrera Ca[28]; //Arreglo con los datos de las carreras
     if(argc > 1){
+        //Arreglo con los codigos de las carreras
+        std::string codigo[28] = {"21089.txt","21002.txt","21012.txt","21048.txt","21015.txt","21081.txt","21082.txt","21047.txt",
+        "21032.txt","21074.txt","21087.txt","21073.txt","21039.txt","21083.txt","21080.txt","21024.txt","21023.txt","21043.txt",
+        "21049.txt","21041.txt","21030.txt","21096.txt","21046.txt","21076.txt","21075.txt","21071.txt","21031.txt","21045.txt"};
+        std::vector<Postulante> P; //Vector para postulantes
+        std::string op = argv[1]; //Opcion que ingresa el usuario
+        Carrera Ca[28]; //Arreglo con los datos de las carreras
         if(op == "1" && argc == 4){
             LlenarDatos(Ca);//Se llenan los datos de las carreras
             std::string arch(argv[2]); //el archivo que hay que leer
@@ -30,9 +30,9 @@ int main(int argc, char** argv){
                     persona = obtenerlinea(linea);
                     Postulante A=llenarPostulante(persona);
                     P.push_back(A);
-                    persona.clear();
+                    persona.clear(); //Se limpia persona
                 }
-                entraste(Ca,P);
+                entraste(Ca,P); //Realiza ingreso a carreras
 
                 for (int i=0; i<28;i++){
                     std::string rute(carpeta + "/" + codigo[i]);//Nombre archivo
@@ -77,10 +77,9 @@ int main(int argc, char** argv){
                 }      
             }
         }
+    }else{ //Se muestran participantes
+        participantes();
     }
-    else{ //Se muestran participantes
-            participantes();
-        }
     return EXIT_SUCCESS;
 }
 

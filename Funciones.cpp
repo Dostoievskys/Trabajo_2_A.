@@ -9,7 +9,7 @@
 
 void participantes(){
     std::cout << std::endl << "=== Integrantes: ===" << std::endl;
-    std::cout << std::endl << "Braulio Argandoña"  << std::endl;
+    std::cout << std::endl << "Braulio Argandona"  << std::endl;
     std::cout << std::endl << "Fanny Rivero"  << std::endl;
     std::cout << std::endl << "Jennifer Portiño"  << std::endl;
 }
@@ -216,29 +216,26 @@ void Ponderacion(Postulante P, tip A[12]){
 void quicksort_vect(tip x[12],int first,int last){
     tip temp;
     int j,i,pivot;
-
     if(first<last){
-         pivot=first;
-         i=first;
-         j=last;
-
-         while(i<j){
-             while(x[i].pondera<=x[pivot].pondera&&i<last){
-                 i++;}
-             while(x[j].pondera>x[pivot].pondera){
-                 j--;}
-             if(i<j){
-                 temp=x[i];
-                  x[i]=x[j];
-                  x[j]=temp;
-             }
-         }
-
-         temp=x[pivot];
-         x[pivot]=x[j];
-         x[j]=temp;
-         quicksort_vect(x,first,j-1);
-         quicksort_vect(x,j+1,last);
+        pivot=first;
+        i=first;
+        j=last;
+        while(i<j){
+            while(x[i].pondera<=x[pivot].pondera&&i<last){
+                i++;}
+            while(x[j].pondera>x[pivot].pondera){
+                j--;}
+            if(i<j){
+                temp=x[i];
+                x[i]=x[j];
+                x[j]=temp;
+            }
+        }
+        temp=x[pivot];
+        x[pivot]=x[j];
+        x[j]=temp;
+        quicksort_vect(x,first,j-1);
+        quicksort_vect(x,j+1,last);
     }
 }
 
@@ -254,7 +251,6 @@ std::vector<int> obtenerlinea(std::string fila){
 }
 
 void quicksort(Carrera &x,int prim,int ult){
-    //Postulante aux;
     int j,i,pivot; 
     if(prim<ult){
         pivot=prim;
@@ -267,15 +263,9 @@ void quicksort(Carrera &x,int prim,int ult){
             while(x.GetPostulantes(j).pond <x.GetPostulantes(pivot).pond){
                 j--;}
             if(i<j){
-                //aux=x.GetPostulantes(i);
-                //x.SetPostulantes(x.GetPostulantes(j), i);
-                //x.SetPostulantes(aux, j);
                 x.SetPostulantes(j,i);
             }
         }
-        //aux=x.GetPostulantes(pivot);
-        //x.SetPostulantes(x.GetPostulantes(j), pivot);
-        //x.SetPostulantes(aux, j);
         x.SetPostulantes(pivot, j);
         quicksort(x,prim,j-1);
         quicksort(x,j+1,ult);
@@ -283,17 +273,17 @@ void quicksort(Carrera &x,int prim,int ult){
 }
 
 void entraste(Carrera Ca[], std::vector<Postulante> P){
-    for(int i=0; i<int(P.size()); i++){
+    for(int i=0; i<int(P.size()); i++){  //Recorre el arreglo de postulantes
         int prom=P[i].lenguaje+P[i].mate;
         prom=prom/2;
-        if(prom>=450){
+        if(prom>=450){                  //Primer filtro para ingresar a una carrera
             tip ponder[12];
-            Ponderacion(P[i], ponder);
-            for(int t=11; t>0; t--){
-                if(P[i].entro==false){
+            Ponderacion(P[i], ponder);  //Calcula las ponderaciones de un postulante
+            for(int t=11; t>0; t--){    //Recorre las ponderaciones de un postulante
+                if(P[i].entro==false){  //Segundo filtro: que no haya ingresado previamente a una carrera
                     P[i].pond=ponder[t].pondera;
-                    if(ponder[t].tipo==1){
-                        llenarCarr(Ca[0], P, P[i], i);
+                    if(ponder[t].tipo==1){ //De aqui en adelante se verifica a que tipo pertenece
+                        llenarCarr(Ca[0], P, P[i], i);//y realiza el ingreso
                     }
                     if(ponder[t].tipo==2){
                         llenarCarr(Ca[1], P, P[i], i);
@@ -360,26 +350,25 @@ void entraste(Carrera Ca[], std::vector<Postulante> P){
 
 
 void llenarCarr(Carrera &Ca, std::vector<Postulante> &A,Postulante &P, int &i){
-    if(P.pond > Ca.GetUltimo()){
-        P.entro=true;
-        if(Ca.GetVacantes()>0){
+    if(P.pond > Ca.GetUltimo()){     //Si la ponderacion es mayor al ultimo ingresado puede
+        P.entro=true;                //ingresar a la carrera
+        if(Ca.GetVacantes()>0){      //Si existen vacantes lo ingresa directamente a la carrera
             Ca.llenarPost(P);
-            Ca.SetActVacantes((Ca.GetActVacantes()+1));
-            Ca.SetVacantes((Ca.GetVacantes()-1));
-            if(Ca.GetVacantes()==0){
-                quicksort(Ca,0,Ca.GetActVacantes()-1);
-                Ca.SetUltimo(Ca.GetPostulantes(Ca.GetActVacantes()-1).pond);
+            Ca.SetActVacantes((Ca.GetActVacantes()+1)); //Se actualizan postulantes ingresados
+            Ca.SetVacantes((Ca.GetVacantes()-1));       //Se actualizan cantidad de vacantes
+            if(Ca.GetVacantes()==0){                    //Si es el ultimo de las vacantes
+                quicksort(Ca,0,Ca.GetActVacantes()-1);  //Ordena
+                Ca.SetUltimo(Ca.GetPostulantes(Ca.GetActVacantes()-1).pond); //y cambia la ultima ponderacion
             }
-        }else{
-            Postulante aux=Ca.GetPostulantes(Ca.GetActVacantes()-1);
-            aux.entro=false;
-            Ca.Reemplazo(P);
-            quicksort(Ca,0,Ca.GetActVacantes()-1);
-            Ca.SetUltimo(Ca.GetPostulantes(Ca.GetActVacantes()-1).pond);
-            A.push_back(aux);
-            A.erase(A.begin()+2);
-            i--;
-            //llenarCarr(Ca, A, aux, i);
+        }else{                       //Si no existen vacantes, es necesario intercambiar el ultimo
+            Postulante aux=Ca.GetPostulantes(Ca.GetActVacantes()-1); //Guardamos el ultimo
+            aux.entro=false;         //Le cambiamos su estado de ingreso
+            Ca.Reemplazo(P);         //Se reemplaza el ultimo por el nuevo ingresado
+            quicksort(Ca,0,Ca.GetActVacantes()-1);          //Ordena
+            Ca.SetUltimo(Ca.GetPostulantes(Ca.GetActVacantes()-1).pond); //Cambia ultima ponderacion
+            A.push_back(aux);        //El postulante que sale ingresa nuevamente al vector del total de postulante
+            A.erase(A.begin()+2);    //Se elimina uno de los postulantes del inicio para asi no modificar el total
+            i--;                     //Se modifica el indice del for de la otra funcion para que no se salte ningun postulante
         }
     }
 }
@@ -391,8 +380,8 @@ Postulante llenarPostulante(std::vector<int> persona){
     A.ranking=persona[2];
     A.lenguaje=persona[3];
     A.mate=persona[4];
-    if(persona[5]>persona[6]){
-        A.ciencias=persona[5];
+    if(persona[5]>persona[6]){  //Se realiza filtro de ponderacion mayor
+        A.ciencias=persona[5];  //Ciencias o Historia
     }else{
         A.ciencias=persona[6];
     }
